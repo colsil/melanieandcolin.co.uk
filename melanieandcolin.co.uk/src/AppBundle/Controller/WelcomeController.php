@@ -9,16 +9,17 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class WelcomeController
+class WelcomeController extends Controller
 {
     /**
      * @Route("/welcome")
      */
     public function welcome() {
-        return new Response(
-            '<html><body>Welcome</body></html>'
+        return $this->render(
+            'welcome.html.twig'
         );
     }
 }
