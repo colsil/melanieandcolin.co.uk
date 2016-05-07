@@ -16,6 +16,7 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
             {% javascripts
+            '../vendor/components/jquery/jquery.min.js'
             '../vendor/twitter/bootstrap/dist/js/bootstrap.min.js'
             output='js/compiled/melncolsite.js' %}
             <script src="{{ asset_url }}"></script>
