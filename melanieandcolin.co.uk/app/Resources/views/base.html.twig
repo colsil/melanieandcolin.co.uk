@@ -7,9 +7,9 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets
-            '../vendor/twitter/bootstrap/dist/css/bootstrap.min.css'
-            'css/carousel.css'
-            filter='cssrewrite' %}
+                '../vendor/twitter/bootstrap/dist/css/bootstrap.min.css'
+                '@AppBundle/Resources/css/carousel.css'
+            %}
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
