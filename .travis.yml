@@ -1,12 +1,15 @@
 language: php
 php:
-  - '5.6'
-  - '7.0'
+- '5.6'
+- '7.0'
 install:
-  - cd code
-  - composer install
-  - php bin/console assetic:dump
-  - php bin/console cache:clear
-  - php bin/console server:start
+- cd code
+- composer install
+- php bin/console assetic:dump
+- php bin/console cache:clear
+- php bin/console server:start
 script:
-  - ./vendor/bin/codecept run
+- ./vendor/bin/codecept run
+before_install:
+- openssl aes-256-cbc -K $encrypted_a2051fc99353_key -iv $encrypted_a2051fc99353_iv
+  -in build/sshkeys/travis_key.rsa.enc -out build/sshkeys/travis_key.rsa -d
