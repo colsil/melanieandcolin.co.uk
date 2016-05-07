@@ -15,6 +15,7 @@ before_install:
   -in build/sshkeys/travis_key.rsa.enc -out build/sshkeys/travis_key.rsa -d
 after_success:
 - cd ../
+- chmod 600 build/sshkeys/travis_key.rsa
 - tar -czf site.tar.gz code/*
 - 'scp -i build/sshkeys/travis_key.rsa site.tar.gz ubuntu@melanieandcolin.uk:'
 - ssh -i build/sshkeys/travis_key.rsa ubuntu@melanieandcolin.uk "tar -xzf site.tar.gz -C /var/www/melanieandcolin.co.uk"
