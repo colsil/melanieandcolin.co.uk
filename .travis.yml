@@ -5,7 +5,7 @@ php:
 install:
   - cd code
   - composer install
-  - ls
+  - ls app/
   - php bin/console assetic:dump
   - php bin/console cache:clear
   - alias codecept='./vendor/bin/codecept'
