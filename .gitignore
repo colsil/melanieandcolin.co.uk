@@ -1,7 +1,6 @@
 LICENSE
 README.md
 config.php
-/code/composer.lock
 /code/web/bundles/
 /code/var/bootstrap.php.cache
 /code/var/cache/*
