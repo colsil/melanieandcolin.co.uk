@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets 'css/*' filter='cssrewrite' %}
+            {% stylesheets 'css/*'
+            '../vendor/twitter/bootstrap/dist/css/bootstrap.min.css'
+            filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
