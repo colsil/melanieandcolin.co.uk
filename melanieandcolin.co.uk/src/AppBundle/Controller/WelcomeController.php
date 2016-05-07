@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class WelcomeController extends Controller
 {
     /**
-     * @Route("/welcome")
+     * @Route("/")
      */
     public function welcome() {
         return $this->render(
