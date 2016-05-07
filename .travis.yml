@@ -1,0 +1,11 @@
+language: php
+php:
+  - '5.6'
+  - '7.0'
+install:
+  - cd code
+  - composer install
+  - php bin/console assetic:dump
+  - php bin/console cache:clear
+script: true
+
