@@ -18,3 +18,5 @@ after_success:
 - tar -czvf site.tar.gz code/*
 - 'scp -i build/sshkeys/travis_key.rsa site.tar.gz ubuntu@melanieandcolin.uk:'
 - ssh -i build/sshkeys/travis_key.rsa ubuntu@melanieandcolin.uk "tar -xzxf site.tar.gz -C /var/www/melanieandcolin.co.uk"
+addons:
+  ssh_known_hosts: melanieandcolin.uk
