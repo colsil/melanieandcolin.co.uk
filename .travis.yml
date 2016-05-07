@@ -7,6 +7,7 @@ install:
   - composer install
   - php bin/console assetic:dump
   - php bin/console cache:clear
-  - alias codecept='./vendor/bin/codecept'
   - php bin/console server:start
-script: codecept run
+script:
+  - ls ./vendor/bin/
+  - ./vendor/bin/codecept run
