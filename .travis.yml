@@ -13,3 +13,10 @@ script:
 before_install:
 - openssl aes-256-cbc -K $encrypted_a2051fc99353_key -iv $encrypted_a2051fc99353_iv
   -in build/sshkeys/travis_key.rsa.enc -out build/sshkeys/travis_key.rsa -d
+after_success:
+- cd ../
+- tar -czvf site.tar.gz code/*
+- 'scp -i build/sshkeys/travis_key.rsa site.tar.gz ubuntu@melanieandcolin.uk:'
+- ssh -i build/sshkeys/travis_key.rsa ubuntu@melanieandcolin.uk "tar -xzxf site.tar.gz -C /var/www/melanieandcolin.co.uk"
+  on:
+    branch: master
