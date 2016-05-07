@@ -16,6 +16,6 @@ before_install:
 after_success:
 - cd ../
 - chmod 600 build/sshkeys/travis_key.rsa
-- builds/deploy.sh
+- build/deploy.sh
 addons:
   ssh_known_hosts: melanieandcolin.uk
