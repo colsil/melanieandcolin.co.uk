@@ -11,7 +11,6 @@ config.php
 /code/app/phpunit.xml
 /code/build/
 /code/vendor/
-/code/bin/
 node_modules
 code/web/*/compiled
 !code/web/*/compiled/.gitkeep
