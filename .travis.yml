@@ -9,5 +9,4 @@ install:
   - php bin/console cache:clear
   - php bin/console server:start
 script:
-  - ls ./vendor/bin/
   - ./vendor/bin/codecept run
