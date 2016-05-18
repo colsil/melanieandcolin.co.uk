@@ -18,8 +18,10 @@ class WelcomeController extends Controller
      * @Route("/")
      */
     public function welcome() {
+        $year = date('Y');
         return $this->render(
-            'welcome.html.twig'
+            'welcome.html.twig',
+            array('year' => $year)
         );
     }
 }
