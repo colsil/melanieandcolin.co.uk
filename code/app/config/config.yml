@@ -59,6 +59,12 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/DoctrineMigrations"
+    namespace: WeddingSite\Migrations
+    table_name: migration_versions
+    name: WeddingSite Migrations
+
 assetic:
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'

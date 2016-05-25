@@ -5,5 +5,6 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&  [ "${TRAVIS_PHP_VERSION}" = "5.6" 
     tar -czf site.tar.gz code/*
     scp -i build/sshkeys/travis_key.rsa site.tar.gz ubuntu@melanieandcolin.uk:
     ssh -i build/sshkeys/travis_key.rsa ubuntu@melanieandcolin.uk "tar -xzf site.tar.gz -C /var/www/melanieandcolin.co.uk"
+    ssh -i build/sshkeys/travis_key.rsa ubuntu@melanieandcolin.uk "php /var/www/melanieandcolin.co.uk/code/bin/console doctrine:migrations:migrate --no-interaction"
     ssh -i build/sshkeys/travis_key.rsa ubuntu@melanieandcolin.uk "php /var/www/melanieandcolin.co.uk/code/bin/console cache:clear --env=prod"
 fi
