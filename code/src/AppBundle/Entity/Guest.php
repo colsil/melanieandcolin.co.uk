@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="guest")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GuestRepository")
  */
-class Guest
+class Guest extends BaseUser
 {
     /**
      * @var int
@@ -19,7 +20,7 @@ class Guest
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -34,20 +35,6 @@ class Guest
      * @ORM\Column(name="surname", type="string", length=255)
      */
     private $surname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="text")
-     */
-    private $password;
 
     /**
      * @var bool
