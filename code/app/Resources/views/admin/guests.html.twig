@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Admin Area</h1>
+
+        <table class="table">
+            <tr>
+                <th>Guest Name</th>
+                <th>Guest Email</th>
+                <th>Attending Day</th>
+                <th>Attending Evening</th>
+            </tr>
+            {% for guest in guests %}
+                <tr>
+                    <td>{{ guest.name }} {{ guest.surname }}</td>
+                    <td>{{ guest.email }}</td>
+                    <td>
+                        {% if guest.invitedday == false %}
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                        {% elseif guest.attendingday == true %}
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        {% else %}
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if guest.invitedevening == false %}
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                        {% elseif guest.attendingevening == true %}
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        {% else %}
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
