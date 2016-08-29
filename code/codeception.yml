@@ -15,7 +15,7 @@ extensions:
 modules:
     config:
         Db:
-            dsn: ''
-            user: ''
-            password: ''
+            dsn: 'mysql:host=%database_host%;dbname=%database_name%'
+            user: '%database_user%'
+            password: '%database_password%'
             dump: tests/_data/dump.sql

@@ -55,14 +55,14 @@ class Guest extends BaseUser
      *
      * @ORM\Column(name="attendingday", type="boolean")
      */
-    private $attendingday;
+    private $attendingday = 0;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="attendingevening", type="boolean")
      */
-    private $attendingevening;
+    private $attendingevening = 0;
 
 
     /**
