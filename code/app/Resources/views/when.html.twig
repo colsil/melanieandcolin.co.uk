@@ -39,42 +39,21 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="text-center">Saturday 5th August 2017</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <p class="text-center">12:30</p>
+        {% for time, event in timings %}
+            <div class="row">
+                <div class="col-lg-6">
+                    <p class="text-center">{{ time }}</p>
+                </div>
+                <div class="col-lg-6">
+                    <p class="text-center">{{ event }}</p>
+                </div>
             </div>
-            <div class="col-lg-6">
-                <p class="text-center">Guests Arrive for 1pm Ceremony</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <p class="text-center">13:00</p>
-            </div>
-            <div class="col-lg-6">
-                <p class="text-center">Wedding Ceremony</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <p class="text-center">13:30</p>
-            </div>
-            <div class="col-lg-6">
-                <p class="text-center">Drinks Reception</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <p class="text-center">14:00</p>
-            </div>
-            <div class="col-lg-6">
-                <p class="text-center">More details coming later...</p>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 {% endblock %}

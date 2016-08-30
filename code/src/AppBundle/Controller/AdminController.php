@@ -17,18 +17,20 @@ class AdminController extends Controller
     /**
      * @Route("/admin/guests")
      */
-    public function guests() {
-        $year = date('Y');
+    public function guests()
+    {
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guests = $guestRepository->findAll();
         return $this->render(
             'admin/guests.html.twig',
-            array('year' => $year,
+            array(
                 'guests' => $guests
             )
         );
     }
 
+    public function editGuest() {
 
+    }
 
 }

@@ -18,21 +18,19 @@ class WelcomeController extends Controller
      * @Route("/")
      */
     public function welcome() {
-        $year = date('Y');
         return $this->render(
             'welcome.html.twig',
-            array('year' => $year)
+            array()
         );
     }
 
     /**
      * @Route("/where")
      */
-    public function location() {
-        $year = date('Y');
+    public function where() {
         return $this->render(
-            'location.html.twig',
-            array('year' => $year)
+            'where.html.twig',
+            array()
         );
     }
 
@@ -40,10 +38,23 @@ class WelcomeController extends Controller
      * @Route("/when")
      */
     public function when() {
-        $year = date('Y');
+        $timings = [
+            '12:00 - 12:45' => 'Guests Arrive',
+            '13:00 - 13:30' => 'Ceremony',
+            '13:30 - 14:00' => 'Reception Drinks',
+            '14:30' => 'Canapés Served',
+            '16:00 - 16:30' => 'Wedding Breakfast Starts',
+            '19:00 - 19:30' => 'Evening Guests Arrive',
+            '20:00' => 'Cake Cutting & First Dance',
+            '20:00 - 21:00' => 'Band First Set',
+            '21:00 - 22:00' => 'Evening Buffet Served',
+            '22:00 - 23:00' => 'Band Second Set',
+            '01:00' => 'Bar Closes'
+        ];
+
         return $this->render(
             'when.html.twig',
-            array('year' => $year)
+            array('timings' => $timings)
         );
     }
 
