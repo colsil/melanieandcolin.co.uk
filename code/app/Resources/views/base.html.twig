@@ -29,7 +29,7 @@
                     </button>
                     <a class="navbar-brand" href="/">Mel & Colin</a>
                 </div>
-                <div id="navbar" class="navbar-right navbar-collapse collapse">
+                <div id="navbar" class="navbar navbar-collapse collapse">
                     {% if is_granted("ROLE_USER") %}
                         <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -44,15 +44,19 @@
                         </li>
                         </ul>
                     {% else %}
-                        <ul class="nav navbar-nav">
+                        <ul class="navbar-right nav navbar-nav">
                             <li class=""><a href="/login">Sign In</a></li>
                         </ul>
                     {% endif %}
                     {% if is_granted("ROLE_ADMIN") %}
-                        <ul class="nav navbar-nav">
+                        <ul class="navbar-right nav navbar-nav">
                             <li><a href="/admin/guests">Admin Guests</a></li>
                         </ul>
                     {% endif %}
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/location">Location</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>

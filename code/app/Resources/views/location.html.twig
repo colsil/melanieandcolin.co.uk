@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="locationcontainer" class="container">
+        <div id="carousel-missenden" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-missenden" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-missenden" data-slide-to="1"></li>
+                <li data-target="#carousel-missenden" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    {% image '@AppBundle/Resources/images/missenden1.jpg' %}
+                        <img src="{{ asset_url }}" alt="Missenden Abbey">
+                    {% endimage %}
+                </div>
+                <div class="item">
+                    {% image '@AppBundle/Resources/images/missenden2.jpg' %}
+                    <img src="{{ asset_url }}" alt="Missenden Abbey">
+                    {% endimage %}
+                </div>
+                <div class="item">
+                    {% image '@AppBundle/Resources/images/missenden3.jpg' %}
+                    <img src="{{ asset_url }}" alt="Missenden Abbey">
+                    {% endimage %}
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-missenden" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-missenden" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="text-center">We will be getting married at the wonderful <a
+                            href="http://missendenabbey.co.uk/">Missenden Abbey</a> in
+                    Buckinghamshire</p>
+                <p class="text-center">The full address is: <br/>
+                    Missenden Abbey<br/>
+                    London Rd<br/>
+                    Great Missenden<br/>
+                    HP16 0BD<br/>
+                </p>
+            </div>
+            <div class="col-lg-12">
+                <iframe class="center-block"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2472.7789371305157!2d-0.706299384204801!3d51.70049037966728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48765e37af9b35b1%3A0xa94510fbdfd13152!2sMissenden+Abbey+Conference+Centre!5e0!3m2!1sen!2suk!4v1472507318013"
+                        width="80%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+{% endblock %}

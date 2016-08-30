@@ -24,4 +24,16 @@ class WelcomeController extends Controller
             array('year' => $year)
         );
     }
+
+    /**
+     * @Route("/location")
+     */
+    public function location() {
+        $year = date('Y');
+        return $this->render(
+            'location.html.twig',
+            array('year' => $year)
+        );
+    }
+    
 }
