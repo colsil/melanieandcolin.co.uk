@@ -26,7 +26,7 @@ class WelcomeController extends Controller
     }
 
     /**
-     * @Route("/location")
+     * @Route("/where")
      */
     public function location() {
         $year = date('Y');
@@ -35,5 +35,16 @@ class WelcomeController extends Controller
             array('year' => $year)
         );
     }
-    
+
+    /**
+     * @Route("/when")
+     */
+    public function when() {
+        $year = date('Y');
+        return $this->render(
+            'when.html.twig',
+            array('year' => $year)
+        );
+    }
+
 }
