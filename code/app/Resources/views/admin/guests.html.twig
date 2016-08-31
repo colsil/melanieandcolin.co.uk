@@ -5,17 +5,19 @@
 
         <table class="table">
             <tr>
-                <th>Guest Name</th>
+                <th>First Name</th>
+                <th>Surname</th>
                 <th>Guest Email</th>
-                <th>Invited Day</th>
-                <th>Attending Day</th>
-                <th>Invited Evening</th>
-                <th>Attending Evening</th>
+                <th>Invited Day ({{ numInvitedDay }})</th>
+                <th>Attending Day ({{ numAttendingDay }})</th>
+                <th>Invited Evening ({{ numInvitedEvening }})</th>
+                <th>Attending Evening ({{ numAttendingEvening }})</th>
                 <th><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
             </tr>
             {% for guest in guests %}
                 <tr>
-                    <td>{{ guest.name }} {{ guest.surname }}</td>
+                    <td>{{ guest.name }}</td>
+                    <td>{{ guest.surname }}</td>
                     <td>{{ guest.email }}</td>
                     <td>{% if guest.invitedday == false %}
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -49,6 +51,24 @@
                     </td>
                 </tr>
             {% endfor %}
+            {{ form_start(form) }}
+            <tr>
+                <td>{{ form_row(form.name) }}</td>
+                <td>{{ form_row(form.surname) }}</td>
+                <td>{{ form_row(form.email) }}</td>
+                <td>{{ form_row(form.invitedday) }}</td>
+                <td>{{ form_row(form.attendingday) }}</td>
+                <td>{{ form_row(form.invitedevening) }}</td>
+                <td>{{ form_row(form.attendingevening) }}</td>
+                <td>
+                    <button id="submit" class="center-block btn-done">Add Guest</button>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="9">{{ form_errors(form) }}</td>
+            </tr>
+            {{ form_end(form) }}
         </table>
     </div>
 {% endblock %}
