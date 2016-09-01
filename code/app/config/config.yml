@@ -69,6 +69,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\Guest
+    from_email:
+        address:        noreply@melanieandcolin.co.uk
+        sender_name:    Melanie and Colin
     registration:
         form:
             type: AppBundle\Form\RegistrationType
