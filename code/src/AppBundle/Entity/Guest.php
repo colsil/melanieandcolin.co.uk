@@ -64,6 +64,12 @@ class Guest extends BaseUser
      */
     private $attendingevening = 0;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="rsvp_received", type="boolean")
+     */
+    private $rsvpReceived = 0;
 
     /**
      * Get id
