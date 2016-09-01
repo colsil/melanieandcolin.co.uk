@@ -272,5 +272,28 @@ class Guest extends BaseUser
     {
         return $this->attendingevening;
     }
+
+    /**
+     * Set rsvpReceived
+     *
+     * @param boolean $rsvpReceived
+     *
+     * @return Guest
+     */
+    public function setRSVPReceived($rsvpReceived) {
+        $this->rsvpReceived = $rsvpReceived;
+
+        return $this;
+    }
+
+    /**
+     * Get rsvpReceived
+     *
+     * @return bool
+     */
+    public function getRSVPReceived()
+    {
+        return $this->rsvpReceived;
+    }
 }
 
