@@ -27,6 +27,7 @@ security:
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/welcome$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/guest/, role: ROLE_USER }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/register, role: ROLE_ADMIN }
         - { path: ^/resetting, role: ROLE_USER}

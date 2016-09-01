@@ -30,18 +30,27 @@
                     <a class="navbar-brand" href="/">Mel & Colin</a>
                 </div>
                 <div id="navbar" class="navbar navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/where">Where</a></li>
+                        <li><a href="/when">When</a></li>
+                    </ul>
                     {% if is_granted("ROLE_USER") %}
                         <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">{{ app.user.name }} {{ app.user.surname }}<span
-                                        class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/profile/edit">Edit Profile</a></li>
-                                <li><a href="/profile/change-password">Change Password</a></li>
-                                <li><a href="/logout">Logout</a></li>
-                            </ul>
-                        </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">{{ app.user.name }} {{ app.user.surname }}
+                                    <span
+                                            class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/profile/edit">Edit Profile</a></li>
+                                    <li><a href="/profile/change-password">Change Password</a></li>
+                                    <li><a href="/logout">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="/guest/rsvp">RSVP</a></li>
                         </ul>
                     {% else %}
                         <ul class="navbar-right nav navbar-nav">
@@ -53,11 +62,6 @@
                             <li><a href="/admin/guests">Admin Guests</a></li>
                         </ul>
                     {% endif %}
-                    <ul class="nav navbar-nav navbar-left">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/where">Where</a></li>
-                        <li><a href="/when">When</a></li>
-                    </ul>
                 </div>
             </div>
         </nav>
