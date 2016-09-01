@@ -28,6 +28,8 @@
                     <td>
                         {% if guest.attendingday == true %}
                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        {% elseif guest.rsvpReceived == false %}
+                            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
                         {% else %}
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         {% endif %}
@@ -41,6 +43,8 @@
                     <td>
                         {% if guest.attendingevening == true %}
                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        {% elseif guest.rsvpReceived == false %}
+                            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
                         {% else %}
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         {% endif %}
