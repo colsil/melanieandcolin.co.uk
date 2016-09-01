@@ -33,10 +33,23 @@ class ProfileFormType extends AbstractType
     protected function buildUserForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle',
-                'attr' => array('class' => 'form-control')))
-            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle', 'attr' => array('class' => 'form-control')))
-        ;
+            ->add(
+                'username',
+                null,
+                array(
+                    'label' => 'form.username',
+                    'translation_domain' => 'FOSUserBundle',
+                    'attr' => array('class' => 'form-control')
+                )
+            )
+            ->add(
+                'email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'),
+                array(
+                    'label' => 'form.email',
+                    'translation_domain' => 'FOSUserBundle',
+                    'attr' => array('class' => 'form-control')
+                )
+            );
     }
 
     public function getParent()
