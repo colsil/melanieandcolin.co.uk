@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Guest;
+use AppBundle\Form\RSVPFormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -28,16 +29,14 @@ class GuestFeaturesController extends Controller
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guest = $guestRepository->findOneBy(['username' => $this->getUser()->getUsername()]);
 
-        $rsvpForm = $this->createFormBuilder($guest)
-            ->add('attendingday', CheckboxType::class, array('label' => 'Attending - Day', 'required' => false, 'attr' => array('class' => 'form-control')))
-            ->add('attendingevening', CheckboxType::class, array('label' => 'Attending - Evening', 'required' => false, 'attr' => array('class' => 'form-control')))
-            ->add('SaveRSVP', SubmitType::class, array('label' => 'Save RSVP'))
-            ->getForm();
+        $rsvpForm = $this->createForm(RSVPFormType::class);
 
         $rsvpForm->handleRequest($request);
 
         if ($rsvpForm->isSubmitted() && $rsvpForm->isValid()) {
-            $guest = $rsvpForm->getData();
+            $guestData = $rsvpForm->getData();
+            $guest->setAttendingDay($guestData['attendingday'])
+                ->setAttendingEvening($guestData['attendingevening']);
             $guest->setRSVPReceived(true);
             $em = $this->getDoctrine()->getManager();
             $em->persist($guest);

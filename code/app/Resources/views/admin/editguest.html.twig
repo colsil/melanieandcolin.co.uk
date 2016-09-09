@@ -2,8 +2,20 @@
 
 {% block body %}
     <div class="container">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
+        <div class="">
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.name, null, { 'label_attr': {'class': 'required'} }) }}
+                {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            {{ form_row(form.surname, { 'attr': {'class': 'form-control form-horizontal'} }) }}
+            {{ form_row(form.invitedday) }}
+            {{ form_row(form.attendingday) }}
+            {{ form_row(form.invitedevening) }}
+            {{ form_row(form.attendingevening) }}
+            {{ form_row(form.numplusones) }}
+            {{ form_end(form) }}
+        </div>
+
     </div>
 {% endblock %}
