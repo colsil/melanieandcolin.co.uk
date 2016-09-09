@@ -72,6 +72,29 @@ class Guest extends BaseUser
     private $rsvpReceived = 0;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="numPlusOnes", type="integer")
+     */
+    private $numPlusOnes = 0;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Guest", inversedBy="plusOnes")
+     * @ORM\JoinColumn(name="masterGuestId", referencedColumnName="id")
+     */
+    private $masterGuest;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Guest", mappedBy="masterGuest")
+     */
+    private $plusOnes;
+
+    public function __construct() {
+        $this->plusOnes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return int
