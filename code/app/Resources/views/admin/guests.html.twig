@@ -12,6 +12,7 @@
                 <th>Attending Day ({{ numAttendingDay }})</th>
                 <th>Invited Evening ({{ numInvitedEvening }})</th>
                 <th>Attending Evening ({{ numAttendingEvening }})</th>
+                <th>+1s Permitted</th>
                 <th><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
             </tr>
             {% for guest in guests %}
@@ -50,6 +51,9 @@
                         {% endif %}
                     </td>
                     <td>
+                        {{ guest.numPlusOnes }}
+                    </td>
+                    <td>
                         <a href="/admin/guests/edit/{{ guest.username }}"><span class="glyphicon glyphicon-edit"
                                                                                 aria-hidden="true"></span></a>
                     </td>
@@ -64,6 +68,7 @@
                 <td>{{ form_row(form.attendingday) }}</td>
                 <td>{{ form_row(form.invitedevening) }}</td>
                 <td>{{ form_row(form.attendingevening) }}</td>
+                <td>{{ form_row(form.numplusones) }}</td>
                 <td>
                     <button id="submit" class="center-block btn-done">Add Guest</button>
                 </td>

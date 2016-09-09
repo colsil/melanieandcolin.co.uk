@@ -91,6 +91,7 @@ class Guest extends BaseUser
     private $plusOnes;
 
     public function __construct() {
+        parent::__construct();
         $this->plusOnes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -317,6 +318,27 @@ class Guest extends BaseUser
     public function getRSVPReceived()
     {
         return $this->rsvpReceived;
+    }
+
+    /**
+     * Get number of plus ones permitted
+     *
+     * @return int
+     */
+    public function getNumPlusOnes()
+    {
+        return $this->numPlusOnes;
+    }
+
+    /**
+     * Set the number of plus ones permitted
+     *
+     * @return Guest
+     */
+    public function setNumPlusOnes($numPlusOnes) {
+        $this->numPlusOnes = $numPlusOnes;
+
+        return $this;
     }
 }
 

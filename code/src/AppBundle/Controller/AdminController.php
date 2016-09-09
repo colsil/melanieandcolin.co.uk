@@ -63,7 +63,8 @@ class AdminController extends Controller
                 ->setInvitedday($guestdata['invitedday'])
                 ->setAttendingevening($guestdata['attendingevening'])
                 ->setInvitedevening($guestdata['invitedevening'])
-                ->setUsername($guestdata['email']);
+                ->setUsername($guestdata['email'])
+                ->setNumPlusOnes($guestdata['numplusones']);
             $generatedPassword = $this->getRandomPassword(12);
             $guest->setPlainPassword($generatedPassword);
             $em = $this->getDoctrine()->getManager();
