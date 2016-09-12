@@ -2,20 +2,53 @@
 
 {% block body %}
     <div class="container">
-        <div class="">
-            {{ form_start(form) }}
-            <div class="form-group">
-                {{ form_label(form.name, null, { 'label_attr': {'class': 'required'} }) }}
+        <div class="col-lg-12 col-md-12 col-sm-12"></div>
+        {{ form_start(form, { 'attr': {'class': 'form-horizontal'}}) }}
+        <div class="form-group">
+            {{ form_label(form.name, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+            <div class="col-sm-10 col-lg-10">
                 {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
             </div>
-            {{ form_row(form.surname, { 'attr': {'class': 'form-control form-horizontal'} }) }}
-            {{ form_row(form.invitedday) }}
-            {{ form_row(form.attendingday) }}
-            {{ form_row(form.invitedevening) }}
-            {{ form_row(form.attendingevening) }}
-            {{ form_row(form.numplusones) }}
-            {{ form_end(form) }}
         </div>
-
+        <div class="form-group">
+            {{ form_label(form.surname, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+            <div class="col-sm-10 col-lg-10">
+                {{ form_widget(form.surname, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.invitedday, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+            <div class="col-sm-10 col-lg-10">
+                {{ form_widget(form.invitedday, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.attendingday, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+            <div class="col-sm-10 col-lg-10">
+                {{ form_widget(form.attendingday, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.invitedevening, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+            <div class="col-sm-10 col-lg-10">
+                {{ form_widget(form.invitedevening, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.attendingevening, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+            <div class="col-sm-10 col-lg-10">
+                {{ form_widget(form.attendingevening, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.numplusones, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+            <div class="col-sm-10 col-lg-10">
+                {{ form_widget(form.numplusones, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="col-lg-10 col-lg-offset-2 btn btn-success" type="submit">Save Guest</button>
+        </div>
+        {{ form_end(form, {'render_rest': false}) }}
     </div>
 {% endblock %}

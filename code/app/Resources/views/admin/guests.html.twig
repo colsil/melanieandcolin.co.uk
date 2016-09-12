@@ -61,23 +61,23 @@
             {% endfor %}
             {{ form_start(form) }}
             <tr>
-                <td>{{ form_row(form.name) }}</td>
-                <td>{{ form_row(form.surname) }}</td>
-                <td>{{ form_row(form.email) }}</td>
-                <td>{{ form_row(form.invitedday) }}</td>
-                <td>{{ form_row(form.attendingday) }}</td>
-                <td>{{ form_row(form.invitedevening) }}</td>
-                <td>{{ form_row(form.attendingevening) }}</td>
-                <td>{{ form_row(form.numplusones) }}</td>
+                <td>{{ form_widget(form.name, { 'attr': { 'class': 'form-control'}}) }}</td>
+                <td>{{ form_widget(form.surname,{ 'attr': { 'class': 'form-control'}}) }}</td>
+                <td>{{ form_widget(form.email,{ 'attr': { 'class': 'form-control'}}) }}</td>
+                <td>{{ form_widget(form.invitedday,{ 'attr': { 'class': 'form-control'}}) }}</td>
+                <td>{{ form_widget(form.attendingday,{ 'attr': { 'class': 'form-control'}}) }}</td>
+                <td>{{ form_widget(form.invitedevening,{ 'attr': { 'class': 'form-control'}}) }}</td>
+                <td>{{ form_widget(form.attendingevening,{ 'attr': { 'class': 'form-control'}}) }}</td>
+                <td>{{ form_widget(form.numplusones,{ 'attr': { 'class': 'form-control'}}) }}</td>
                 <td>
-                    <button id="submit" class="center-block btn-done">Add Guest</button>
+                    <button id="submit" type="submit" class="center-block btn btn-success">Add Guest</button>
                 </td>
 
             </tr>
             <tr>
                 <td colspan="9">{{ form_errors(form) }}</td>
             </tr>
-            {{ form_end(form) }}
+            {{ form_end(form, {'render_rest': false}) }}
         </table>
     </div>
 {% endblock %}
