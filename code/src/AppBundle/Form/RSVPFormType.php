@@ -21,14 +21,14 @@ class RSVPFormType extends AbstractType
             ->add(
                 'attendingevening',
                 CheckboxType::class,
-                array('label' => "Attending - Evening", 'required' => false, 'attr' => array('class' => 'form-control'))
+                array('label' => "Attending - Evening", 'required' => false)
             )
             ->add(
                 'attendingday',
                 CheckboxType::class,
-                array('label' => "Attending - Day", 'required' => false, 'attr' => array('class' => 'form-control'))
+                array('label' => "Attending - Day", 'required' => false)
             )
-            ->add('SaveRSVP', SubmitType::class, array('label' => 'Save RSVP'));
+            ->add('saveRSVP', SubmitType::class, array('label' => 'Save RSVP'));
 
     }
 }
