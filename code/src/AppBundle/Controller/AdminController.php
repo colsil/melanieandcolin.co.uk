@@ -9,15 +9,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Guest;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use AppBundle\Form\EmailFormType;
+use AppBundle\Form\RegistrationFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Form\RegistrationType;
 
 class AdminController extends Controller
 {
@@ -50,7 +47,7 @@ class AdminController extends Controller
         $numInvitedEvening = count($guestRepository->findBy(['invitedevening' => 1]));
         $numAttendingEvening = count($guestRepository->findBy(['attendingevening' => 1]));
 
-        $form = $this->createForm(RegistrationType::class);
+        $form = $this->createForm(RegistrationFormType::class);
 
         $form->handleRequest($request);
 
@@ -88,6 +85,20 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/admin/guests/email")
+     */
+    public function emailGuests(Request $request)
+    {
+        $form = $this->createForm(EmailFormType::class);
+        return $this->render(
+            'admin/emailguests.html.twig',
+            array(
+                'form' => $form->createView()
+            )
+        );
+    }
+
+    /**
      * @Route("/admin/guests/edit/{name}")
      */
     public function editGuest($name, Request $request)
@@ -95,16 +106,7 @@ class AdminController extends Controller
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guest = $guestRepository->findOneBy(['username' => $name]);
 
-        $form = $this->createFormBuilder($guest)
-            ->add('name', TextType::class, array('label' => 'First Name', 'attr' => array('class' => 'form-control')))
-            ->add('surname', TextType::class, array('label' => 'Surname', 'attr' => array('class' => 'form-control')))
-            ->add('invitedday', CheckboxType::class, array('label' => 'Invited - Day', 'required' => false, 'attr' => array('class' => 'checkbox')))
-            ->add('invitedevening', CheckboxType::class, array('label' => 'Invited - Evening', 'required' => false, 'attr' => array('class' => 'checkbox')))
-            ->add('attendingday', CheckboxType::class, array('label' => 'Attending - Day', 'required' => false, 'attr' => array('class' => 'checkbox')))
-            ->add('attendingevening', CheckboxType::class, array('label' => 'Attending - Evening', 'required' => false, 'attr' => array('class' => 'checkbox')))
-            ->add('numplusones', IntegerType::class, array('label' => '+1s Permitted', 'required' => false, 'attr' => array('class' => 'form-control')))
-            ->add('save', SubmitType::class, array('label' => 'Save Guest', 'attr' => array('class' => 'btn btn-default')))
-            ->getForm();
+        $form = $this->createForm(RegistrationFormType::class, $guest);
 
         $form->handleRequest($request);
 
@@ -121,7 +123,7 @@ class AdminController extends Controller
             'admin/editguest.html.twig',
             array(
                 'guest' => $guest,
-                'form' => $form->createView(),
+                'form' => $form->createView()
             )
         );
     }

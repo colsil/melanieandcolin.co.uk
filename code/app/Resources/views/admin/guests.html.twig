@@ -68,9 +68,9 @@
                 <td>{{ form_widget(form.attendingday,{ 'attr': { 'class': 'form-control'}}) }}</td>
                 <td>{{ form_widget(form.invitedevening,{ 'attr': { 'class': 'form-control'}}) }}</td>
                 <td>{{ form_widget(form.attendingevening,{ 'attr': { 'class': 'form-control'}}) }}</td>
-                <td>{{ form_widget(form.numplusones,{ 'attr': { 'class': 'form-control'}}) }}</td>
+                <td>{{ form_widget(form.numplusones,{ 'attr': { 'class': 'form-control'}, 'value' : '0'}) }}</td>
                 <td>
-                    <button id="submit" type="submit" class="center-block btn btn-success">Add Guest</button>
+                    {{ form_widget(form.saveguest, { 'attr': { 'class' : 'btn btn-success'}}) }}
                 </td>
 
             </tr>

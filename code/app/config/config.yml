@@ -74,7 +74,7 @@ fos_user:
         sender_name:    Melanie and Colin
     registration:
         form:
-            type: AppBundle\Form\RegistrationType
+            type: AppBundle\Form\RegistrationFormType
     profile:
         form:
             type: AppBundle\Form\ProfileFormType
