@@ -112,6 +112,7 @@ class AdminController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $guest = $form->getData();
+            $guest->setUsername($guest->getEmail());
             $em = $this->getDoctrine()->getManager();
             $em->persist($guest);
             $em->flush();
