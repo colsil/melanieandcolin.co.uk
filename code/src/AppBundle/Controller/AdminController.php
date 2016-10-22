@@ -85,20 +85,6 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/guests/email")
-     */
-    public function emailGuests(Request $request)
-    {
-        $form = $this->createForm(EmailFormType::class);
-        return $this->render(
-            'admin/emailguests.html.twig',
-            array(
-                'form' => $form->createView()
-            )
-        );
-    }
-
-    /**
      * @Route("/admin/guests/edit/{name}")
      */
     public function editGuest($name, Request $request)
