@@ -21,6 +21,5 @@ $I->fillField('First Name','FirstName');
 $I->fillField('Surname','McLastName');
 $I->fillField('Email Address', 'firstname.mclastname@example.com');
 $I->checkOption('Invited Evening');
-$I->fillField('Number of PlusOnes', 2);
 $I->click('Save Guest');
 $I->see('firstname.mclastname@example.com');
