@@ -4,7 +4,7 @@
     <div class="container">
         {{ form_start(form, { 'attr': {'class': 'form-horizontal'}}) }}
 
-        {% if guest.invitedday %}
+        {% if app.user.invitedday %}
             <div class="form-group">
                 {{ form_label(form.attendingday, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
                 <div class="col-sm-10 col-lg-10">
@@ -14,7 +14,7 @@
         {% else %}
             {% do form.attendingday.setRendered %}
         {% endif %}
-        {% if guest.invitedevening %}
+        {% if app.user.invitedevening %}
             <div class="form-group">
                 {{ form_label(form.attendingevening, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
                 <div class="col-sm-10 col-lg-10">

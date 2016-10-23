@@ -4,12 +4,6 @@
     <div class="container">
         {{ form_start(form, { 'attr': {'class': 'form-horizontal'}}) }}
         <div class="form-group">
-            {{ form_label(form.email, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
-            <div class="col-sm-10 col-lg-10">
-                {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
-            </div>
-        </div>
-        <div class="form-group">
             {{ form_label(form.name, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
             <div class="col-sm-10 col-lg-10">
                 {{ form_widget(form.name, { 'attr': {'class': 'form-control'}}) }}
@@ -22,21 +16,9 @@
             </div>
         </div>
         <div class="form-group">
-            {{ form_label(form.invitedday, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
-            <div class="col-sm-10 col-lg-10">
-                {{ form_widget(form.invitedday, { 'attr': {'class': 'form-control'} }) }}
-            </div>
-        </div>
-        <div class="form-group">
             {{ form_label(form.attendingday, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
             <div class="col-sm-10 col-lg-10">
                 {{ form_widget(form.attendingday, { 'attr': {'class': 'form-control'} }) }}
-            </div>
-        </div>
-        <div class="form-group">
-            {{ form_label(form.invitedevening, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
-            <div class="col-sm-10 col-lg-10">
-                {{ form_widget(form.invitedevening, { 'attr': {'class': 'form-control'} }) }}
             </div>
         </div>
         <div class="form-group">

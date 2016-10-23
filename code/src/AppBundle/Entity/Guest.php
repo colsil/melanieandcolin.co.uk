@@ -72,13 +72,6 @@ class Guest extends BaseUser
     private $rsvpReceived = 0;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="numPlusOnes", type="integer")
-     */
-    private $numPlusOnes = 0;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Guest", inversedBy="plusOnes")
      * @ORM\JoinColumn(name="masterGuestId", referencedColumnName="id")
      */
@@ -321,24 +314,24 @@ class Guest extends BaseUser
     }
 
     /**
-     * Get number of plus ones permitted
+     * Return whether this guest is a master guest (is not a plusone)
      *
-     * @return int
+     * @return bool
      */
-    public function getNumPlusOnes()
-    {
-        return $this->numPlusOnes;
+    public function isMasterGuest() {
+        if ($this->plusOnes->count() > 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
-     * Set the number of plus ones permitted
+     * Add a plusOne to this guest
      *
-     * @return Guest
+     * @param $guestid
      */
-    public function setNumPlusOnes($numPlusOnes) {
-        $this->numPlusOnes = $numPlusOnes;
-
-        return $this;
+    public function addPlusOne($guestId) {
+        $this->plusOnes->add($guestId);
+        return;
     }
 }
-

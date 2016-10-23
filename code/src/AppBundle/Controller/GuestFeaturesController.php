@@ -10,7 +10,9 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Guest;
+use AppBundle\Form\PlusOneFormType;
 use AppBundle\Form\RSVPFormType;
+use AppBundle\Form\RegistrationFormType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -46,10 +48,21 @@ class GuestFeaturesController extends Controller
         return $this->render(
             'guest/rsvp.html.twig',
             array(
-                'guest' => $guest,
                 'form' => $rsvpForm->createView(),
             )
         );
+    }
+
+    /**
+     * @Route("/guest/plusones", name="plusones")
+     */
+    public function addplusone() {
+        $form = $this->createForm(PlusOneFormType::class);
+
+        return $this->render('guest/plusones.html.twig',
+            array(
+                'form' => $form->createView()
+            ));
     }
 
     /**

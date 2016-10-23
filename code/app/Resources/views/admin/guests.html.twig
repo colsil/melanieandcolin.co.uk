@@ -12,7 +12,6 @@
                 <th>Attending Day ({{ numAttendingDay }})</th>
                 <th>Invited Evening ({{ numInvitedEvening }})</th>
                 <th>Attending Evening ({{ numAttendingEvening }})</th>
-                <th>+1s Permitted</th>
                 <th><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
             </tr>
             {% for guest in guests %}
@@ -51,9 +50,6 @@
                         {% endif %}
                     </td>
                     <td>
-                        {{ guest.numPlusOnes }}
-                    </td>
-                    <td>
                         <a href="/admin/guests/edit/{{ guest.username }}"><span class="glyphicon glyphicon-edit"
                                                                                 aria-hidden="true"></span></a>
                     </td>
@@ -75,8 +71,6 @@
                     {{ form_label(form.invitedevening, null, { 'label_attr': {'class': 'sr-only'} }) }} </td>
                 <td>{{ form_widget(form.attendingevening,{ 'attr': { 'class': 'form-control'}}) }}
                     {{ form_label(form.attendingevening, null, { 'label_attr': {'class': 'sr-only'} }) }} </td>
-                <td>{{ form_widget(form.numplusones,{ 'attr': { 'class': 'form-control'}, 'value' : '0'}) }}
-                    {{ form_label(form.numplusones, null, { 'label_attr': {'class': 'sr-only'} }) }} </td>
                 <td>
                     {{ form_widget(form.saveguest, { 'attr': { 'class' : 'btn btn-success'}}) }}
                 </td>

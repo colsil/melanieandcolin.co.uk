@@ -52,6 +52,9 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-left">
                             <li><a href="/guest/rsvp">RSVP</a></li>
+                            {% if app.user.isMasterGuest %}
+                                <li><a href="/guest/plusones">Manage +1s</a></li>
+                            {% endif %}
                         </ul>
                     {% else %}
                         <ul class="navbar-right nav navbar-nav">
