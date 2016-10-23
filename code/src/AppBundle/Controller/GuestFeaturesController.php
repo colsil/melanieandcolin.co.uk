@@ -29,14 +29,12 @@ class GuestFeaturesController extends Controller
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guest = $guestRepository->findOneBy(['username' => $this->getUser()->getUsername()]);
 
-        $rsvpForm = $this->createForm(RSVPFormType::class);
+        $rsvpForm = $this->createForm(RSVPFormType::class, $guest);
 
         $rsvpForm->handleRequest($request);
 
         if ($rsvpForm->isSubmitted() && $rsvpForm->isValid()) {
-            $guestData = $rsvpForm->getData();
-            $guest->setAttendingDay($guestData['attendingday'])
-                ->setAttendingEvening($guestData['attendingevening']);
+            $guest = $rsvpForm->getData();
             $guest->setRSVPReceived(true);
             $em = $this->getDoctrine()->getManager();
             $em->persist($guest);
