@@ -121,4 +121,26 @@ class AdminController extends Controller
         );
     }
 
+    /**
+     * @Route("/admin/emails/{filter}")
+     */
+    public function getEmailList($filter = null) {
+        $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
+        $guests = null;
+
+        if ($filter) {
+            $guests = $guestRepository->findBy(array($filter => true));
+        }
+        else {
+            $guests = $guestRepository->findAll();
+        }
+
+        return $this->render(
+            'admin/emails.html.twig',
+            array(
+                'guests' => $guests
+            )
+        );
+    }
+
 }

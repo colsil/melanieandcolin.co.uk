@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<pre>
+    {% for guest in guests %}
+        {{ guest.name }},{{ guest.surname }},{{ guest.email }}
+    {% endfor %}
+</pre>
+{% endblock %}
