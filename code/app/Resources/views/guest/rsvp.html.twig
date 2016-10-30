@@ -58,7 +58,10 @@
                     </div>
                 {% endif %}
             {% endfor %}
+        {% else %}
+            {% do form.PlusOnes.setrendered %}
         {% endif %}
+
         <div class="form-group">
             <div class="form-group">
                 {{ form_widget(form.saveRSVP, { 'attr': { 'class' : 'col-lg-10 col-lg-offset-2 btn btn-success'}}) }}
