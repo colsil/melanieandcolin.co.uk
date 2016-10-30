@@ -122,6 +122,8 @@ class AdminController extends Controller
     }
 
     /**
+     * Renders a list of emails (without guests plusones) for feeding to mailchimp as a csv
+     *
      * @Route("/admin/emails/{filter}")
      */
     public function getEmailList($filter = null) {
@@ -129,10 +131,10 @@ class AdminController extends Controller
         $guests = null;
 
         if ($filter) {
-            $guests = $guestRepository->findBy(array($filter => true));
+            $guests = $guestRepository->findBy(array($filter => true, 'masterGuest' => null));
         }
         else {
-            $guests = $guestRepository->findAll();
+            $guests = $guestRepository->findBy(array('masterGuest' => null));
         }
 
         return $this->render(
