@@ -40,7 +40,7 @@ class AdminController extends Controller
     public function guests(Request $request)
     {
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
-        $guests = $guestRepository->findAll();
+        $guests = $guestRepository->findAll(array(), array('surname' => 'ASC'));
 
         $numInvitedDay = count($guestRepository->findBy(['invitedday' => 1]));
         $numAttendingDay = count($guestRepository->findBy(['attendingday' => 1]));
