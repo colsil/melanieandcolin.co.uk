@@ -47,7 +47,7 @@ class AdminController extends Controller
         $numInvitedEvening = count($guestRepository->findBy(['invitedevening' => 1]));
         $numAttendingEvening = count($guestRepository->findBy(['attendingevening' => 1]));
 
-        $form = $this->createForm(RegistrationFormType::class, null, [ 'guests' => $guests ]);
+        $form = $this->createForm(RegistrationFormType::class, null, ['guests' => $guests]);
 
         $form->handleRequest($request);
 
@@ -96,14 +96,16 @@ class AdminController extends Controller
         $guest = $guestRepository->findOneBy(['username' => $name]);
         $guests = $guestRepository->findAll();
 
-        $form = $this->createForm(RegistrationFormType::class, $guest, [ 'guests' => $guests ] );
+        $form = $this->createForm(RegistrationFormType::class, $guest, ['guests' => $guests]);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $guest = $form->getData();
-            $masterGuest = $guestRepository->find($guest->getMasterGuest());
-            $guest->setMasterGuest($masterGuest);
+            if (!is_null($guest->getMasterGuest())) {
+                $masterGuest = $guestRepository->find($guest->getMasterGuest());
+                $guest->setMasterGuest($masterGuest);
+            }
             $guest->setUsername($guest->getEmail());
             $em = $this->getDoctrine()->getManager();
             $em->persist($guest);
@@ -126,14 +128,14 @@ class AdminController extends Controller
      *
      * @Route("/admin/emails/{filter}")
      */
-    public function getEmailList($filter = null) {
+    public function getEmailList($filter = null)
+    {
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guests = null;
 
         if ($filter) {
             $guests = $guestRepository->findBy(array($filter => true, 'masterGuest' => null));
-        }
-        else {
+        } else {
             $guests = $guestRepository->findBy(array('masterGuest' => null));
         }
 
