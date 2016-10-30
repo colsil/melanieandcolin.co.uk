@@ -47,13 +47,17 @@ class AdminController extends Controller
         $numInvitedEvening = count($guestRepository->findBy(['invitedevening' => 1]));
         $numAttendingEvening = count($guestRepository->findBy(['attendingevening' => 1]));
 
-        $form = $this->createForm(RegistrationFormType::class);
+        $form = $this->createForm(RegistrationFormType::class, null, [ 'guests' => $guests ]);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $guest = new Guest();
             $guestdata = $form->getData();
+            if (!is_null($guestdata['masterguest'])) {
+                $masterguest = $guestRepository->find($guestdata['masterguest']);
+                $guest->setMasterGuest($masterguest);
+            }
             $guest->setEmail($guestdata['email'])
                 ->setName($guestdata['name'])
                 ->setSurname($guestdata['surname'])
@@ -90,13 +94,16 @@ class AdminController extends Controller
     {
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guest = $guestRepository->findOneBy(['username' => $name]);
+        $guests = $guestRepository->findAll();
 
-        $form = $this->createForm(RegistrationFormType::class, $guest);
+        $form = $this->createForm(RegistrationFormType::class, $guest, [ 'guests' => $guests ] );
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $guest = $form->getData();
+            $masterGuest = $guestRepository->find($guest->getMasterGuest());
+            $guest->setMasterGuest($masterGuest);
             $guest->setUsername($guest->getEmail());
             $em = $this->getDoctrine()->getManager();
             $em->persist($guest);

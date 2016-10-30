@@ -8,7 +8,6 @@
 
 namespace AppBundle\Controller;
 
-
 use AppBundle\Entity\Guest;
 use AppBundle\Form\PlusOneFormType;
 use AppBundle\Form\RSVPFormType;
@@ -56,19 +55,47 @@ class GuestFeaturesController extends Controller
     /**
      * @Route("/guest/plusones", name="plusones")
      */
-    public function addplusone() {
-        $form = $this->createForm(PlusOneFormType::class);
+    public function addplusone(Request $request)
+    {
+        $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
+        $guest = $guestRepository->findOneBy(['username' => $this->getUser()->getUsername()]);
+        $plusOnes = $guest->getPlusOnes();
+        $plusOnes = $plusOnes->toArray();
+
+        $forms = [];
+        foreach ($plusOnes as $plusOne) {
+            $forms[] = $this->createForm(PlusOneFormType::class, $plusOne);
+        }
+
+        $formViews = [];
+        foreach ($forms as $form) {
+            $formView = $form->createView();
+            $formViews[] = $formView;
+            if ($request->request->has($formV)){
+                $form->handleRequest($request);
+            }
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $guest = $form->getData();
+
+                $guest->setRSVPReceived(true);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($guest);
+                $em->flush();
+                return $this->redirectToRoute('plusones');
+            }
+        }
+
 
         return $this->render('guest/plusones.html.twig',
-            array(
-                'form' => $form->createView()
-            ));
+            array('forms' => $formViews));
     }
 
     /**
      * @Route("/guest/thanks", name="thanks")
      */
-    public function thanks() {
+    public function thanks()
+    {
         return $this->render(
             'guest/thanks.html.twig'
         );

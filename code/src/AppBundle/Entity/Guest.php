@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -333,5 +334,35 @@ class Guest extends BaseUser
     public function addPlusOne($guestId) {
         $this->plusOnes->add($guestId);
         return;
+    }
+
+    /**
+     * Get the list of plusOnes for this guest
+     *
+     * @return ArrayCollection
+     */
+    public function getPlusOnes() {
+        return $this->plusOnes;
+    }
+
+    /**
+     * Set the master guest id
+     *
+     * @param $guest
+     * @return $guest
+     */
+    public function setMasterGuest($guest) {
+        $this->masterGuest = $guest;
+        return $this;
+    }
+
+    /**
+     * Get the guest marked as the master guest for this guest, or null
+     * if not a plusOne
+     *
+     * @return mixed
+     */
+    public function getMasterGuest() {
+        return $this->masterGuest;
     }
 }
