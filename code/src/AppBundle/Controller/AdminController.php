@@ -35,12 +35,15 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/guests", name="guests")
+     * @Route("/admin/guests/{sort}/{direction}", name="guests")
+     * @param Request $request
+     * @param string $sort
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function guests(Request $request)
+    public function guests(Request $request, $sort = 'surname', $direction = 'ASC')
     {
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
-        $guests = $guestRepository->findBy(array(), array('surname' => 'ASC'));
+        $guests = $guestRepository->findBy(array(), array($sort => $direction));
 
         $numInvitedDay = count($guestRepository->findBy(['invitedday' => 1]));
         $numAttendingDay = count($guestRepository->findBy(['attendingday' => 1]));

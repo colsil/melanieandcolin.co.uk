@@ -5,14 +5,14 @@
 
         <table class="table">
             <tr>
-                <th>First Name</th>
-                <th>Surname</th>
-                <th>Guest Email</th>
-                <th>Invited Day ({{ numInvitedDay }})</th>
-                <th>Attending Day ({{ numAttendingDay }})</th>
-                <th>Invited Evening ({{ numInvitedEvening }})</th>
-                <th>Attending Evening ({{ numAttendingEvening }})</th>
-                <th>Master Guest</th>
+                <th><a href="/admin/guests/name">First Name</a></th>
+                <th><a href="/admin/guests/surname">Surname</a></th>
+                <th><a href="/admin/guests/email">Guest Email</a></th>
+                <th><a href="/admin/guests/invitedday/desc">Invited Day ({{ numInvitedDay }})</a></th>
+                <th><a href="/admin/guests/attendingday/desc">Attending Day ({{ numAttendingDay }})</a></th>
+                <th><a href="/admin/guests/invitedevening/desc">Invited Evening ({{ numInvitedEvening }})</a></th>
+                <th><a href="/admin/guests/attendingevening/desc">Attending Evening ({{ numAttendingEvening }})</a></th>
+                <th><a href="/admin/guests/masterGuest/desc">Master Guest</a></th>
                 <th><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
             </tr>
             {% for guest in guests %}
