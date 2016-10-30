@@ -71,7 +71,7 @@ class GuestFeaturesController extends Controller
         foreach ($forms as $form) {
             $formView = $form->createView();
             $formViews[] = $formView;
-            if ($request->request->has($formV)){
+            if ($request->request->has($form)){
                 $form->handleRequest($request);
             }
 
