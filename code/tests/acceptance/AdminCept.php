@@ -11,7 +11,7 @@ $I->fillField('Username',"test@example.com");
 $I->fillField('Password',"insecureinnit");
 $I->click('Log in');
 $I->wantTo('Ensure the Admin Guests Page works');
-$I->amOnPage('/admin/guests');
+$I->amOnPage('/admin/guests/show');
 $I->see("Admin Area");
 $I->seeElement(".table");
 $I->wantTo('Ensure that I see the test user');
