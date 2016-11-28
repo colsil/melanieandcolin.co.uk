@@ -5,14 +5,14 @@
 
         <table class="table">
             <tr>
-                <th><a href="/admin/guests/name">First Name</a></th>
-                <th><a href="/admin/guests/surname">Surname</a></th>
-                <th><a href="/admin/guests/email">Guest Email</a></th>
-                <th><a href="/admin/guests/invitedday/desc">Invited Day ({{ numInvitedDay }})</a></th>
-                <th><a href="/admin/guests/attendingday/desc">Attending Day ({{ numAttendingDay }})</a></th>
-                <th><a href="/admin/guests/invitedevening/desc">Invited Evening ({{ numInvitedEvening }})</a></th>
-                <th><a href="/admin/guests/attendingevening/desc">Attending Evening ({{ numAttendingEvening }})</a></th>
-                <th><a href="/admin/guests/masterGuest/desc">Master Guest</a></th>
+                <th><a href="/admin/guests/show/name">First Name</a></th>
+                <th><a href="/admin/guests/show/surname">Surname</a></th>
+                <th><a href="/admin/guests/show/email">Guest Email</a></th>
+                <th><a href="/admin/guests/show/invitedday/desc">Invited Day ({{ numInvitedDay }})</a></th>
+                <th><a href="/admin/guests/show/attendingday/desc">Attending Day ({{ numAttendingDay }})</a></th>
+                <th><a href="/admin/guests/show/invitedevening/desc">Invited Evening ({{ numInvitedEvening }})</a></th>
+                <th><a href="/admin/guests/show/attendingevening/desc">Attending Evening ({{ numAttendingEvening }})</a></th>
+                <th><a href="/admin/guests/show/masterGuest/desc">Master Guest</a></th>
                 <th><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
             </tr>
             {% for guest in guests %}
