@@ -35,7 +35,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/guests/{sort}/{direction}", name="guests")
+     * @Route("/admin/guests/show/{sort}/{direction}", name="guests")
      * @param Request $request
      * @param string $sort
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
