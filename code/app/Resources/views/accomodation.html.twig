@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                {% image '@AppBundle/Resources/images/missenden3.jpg' %}
+                <img class="center-block" src="{{ asset_url }}" alt="Missenden Abbey">
+                {% endimage %}
+            </div>
+        </div>
+        <h1 class="text-center">Missenden Abbey</h1>
+        <p>Missenden abbey itself is a conference centre and has a good number of basic but very functional rooms on
+            site. We'll be staying here and would love you to join us for breakfast in the morning</p>
+        <p>Please let them know you're part of our wedding party as they're holding some rooms for us!</p>
+        <p>Booking details can be found on <a href="http://missendenabbey.co.uk/bed-and-breakfast/">their website</a>
+        </p>
+        <p>Phone: 01494 866 811</p>
+    </div>
+{% endblock %}

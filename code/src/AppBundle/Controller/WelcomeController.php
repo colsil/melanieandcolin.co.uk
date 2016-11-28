@@ -35,6 +35,16 @@ class WelcomeController extends Controller
     }
 
     /**
+     * @Route("/where/accomodation")
+     */
+    public function accomodation() {
+        return $this->render(
+            'accomodation.html.twig',
+            array()
+        );
+    }
+
+    /**
      * @Route("/when")
      */
     public function when() {
