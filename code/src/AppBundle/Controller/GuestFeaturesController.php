@@ -37,6 +37,10 @@ class GuestFeaturesController extends Controller
         if ($rsvpForm->isSubmitted() && $rsvpForm->isValid()) {
             $guest = $rsvpForm->getData();
             $guest->setRSVPReceived(true);
+            $plusones = $guest->getPlusOnes();
+            foreach ($plusones as $plusone) {
+                $plusone->setRSVPReceived(true);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($guest);
             $em->flush();
