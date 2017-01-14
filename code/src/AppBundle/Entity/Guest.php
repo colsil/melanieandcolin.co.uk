@@ -38,6 +38,11 @@ class Guest extends BaseUser
     private $surname;
 
     /**
+     * @ORM\OneToMany(targetEntity="GuestRoom", mappedBy="guest")
+     */
+    private $rooms;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="invitedday", type="boolean")
@@ -78,6 +83,8 @@ class Guest extends BaseUser
      */
     private $masterGuest;
 
+
+
     /**
      *
      * @ORM\OneToMany(targetEntity="Guest", mappedBy="masterGuest")
@@ -86,7 +93,8 @@ class Guest extends BaseUser
 
     public function __construct() {
         parent::__construct();
-        $this->plusOnes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->plusOnes = new ArrayCollection();
+        $this->rooms = new ArrayCollection();
     }
 
     /**
