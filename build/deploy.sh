@@ -1,6 +1,6 @@
 #!/bin/bash
 set -ev
-# deploy to production if php version is 5.6 and branch is master, and it's not a pull request!
+# deploy to production if php version is 7.0 and branch is master, and it's not a pull request!
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&  [ "${TRAVIS_PHP_VERSION}" = "7.0" ]  && [ "${TRAVIS_BRANCH}" = "master" ]; then
     tar -czf site.tar.gz code/*
     scp -i build/sshkeys/travis_key.rsa site.tar.gz ubuntu@melanieandcolin.uk:
@@ -11,3 +11,4 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ] &&  [ "${TRAVIS_PHP_VERSION}" = "7.0" 
     php /var/www/melanieandcolin.co.uk/code/bin/console doctrine:migrations:migrate --no-interaction &&
     php /var/www/melanieandcolin.co.uk/code/bin/console cache:clear --env=prod"
 fi
+exit
