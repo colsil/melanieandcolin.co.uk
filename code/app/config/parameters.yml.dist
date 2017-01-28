@@ -15,6 +15,9 @@ parameters:
     mailer_host:       'smtp.gmail.com'
     mailer_user:       username
     mailer_password:   password
+    mailer_auth_mode: null
+    mailer_port: 587
+    mailer_encryption: tls
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
