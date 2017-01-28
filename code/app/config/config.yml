@@ -70,7 +70,7 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\Guest
     from_email:
-        address:        noreply@melanieandcolin.co.uk
+        address:        wedding@melanieandcolin.uk
         sender_name:    Melanie and Colin
     registration:
         form:
