@@ -16,6 +16,7 @@ before_install:
   -in build/sshkeys/travis_key.rsa.enc -out build/sshkeys/travis_key.rsa -d
 - mysql -u root -e 'create database weddingsite character set utf8mb4;'
 after_success:
+- php bin/console server:stop
 - cd ../
 - chmod 600 build/sshkeys/travis_key.rsa
 - build/deploy.sh
