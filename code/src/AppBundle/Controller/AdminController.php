@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Guest;
+use AppBundle\Form\EditGuestFormType;
 use AppBundle\Form\EmailFormType;
 use AppBundle\Form\RegistrationFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -99,7 +100,7 @@ class AdminController extends Controller
         $guest = $guestRepository->findOneBy(['username' => $name]);
         $guests = $guestRepository->findAll();
 
-        $form = $this->createForm(RegistrationFormType::class, $guest, ['guests' => $guests]);
+        $form = $this->createForm(EditGuestFormType::class, $guest, ['guests' => $guests]);
 
         $form->handleRequest($request);
 

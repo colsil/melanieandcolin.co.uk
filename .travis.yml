@@ -20,6 +20,5 @@ after_success:
 - cd ../
 - chmod 600 build/sshkeys/travis_key.rsa
 - build/deploy.sh
-- exit
 addons:
   ssh_known_hosts: melanieandcolin.uk
