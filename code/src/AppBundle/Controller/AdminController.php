@@ -51,6 +51,9 @@ class AdminController extends Controller
         $numInvitedEvening = count($guestRepository->findBy(['invitedevening' => 1]));
         $numAttendingEvening = count($guestRepository->findBy(['attendingevening' => 1]));
 
+        $numInvitedDayNoRSVP = count($guestRepository->findBy([ 'invitedday' => 1, 'rsvpReceived' => 0]));
+        $numInvitedEveningNoRSVP = count($guestRepository->findBy([ 'invitedevening' => 1, 'rsvpReceived' => 0]));
+
         $form = $this->createForm(RegistrationFormType::class, null, ['guests' => $guests]);
 
         $form->handleRequest($request);
@@ -86,7 +89,9 @@ class AdminController extends Controller
                 'numInvitedDay' => $numInvitedDay,
                 'numAttendingDay' => $numAttendingDay,
                 'numInvitedEvening' => $numInvitedEvening,
-                'numAttendingEvening' => $numAttendingEvening
+                'numAttendingEvening' => $numAttendingEvening,
+                'numInvitedDayNoRSVP' => $numInvitedDayNoRSVP,
+                'numInvitedEveningNoRSVP' => $numInvitedEveningNoRSVP
             )
         );
     }

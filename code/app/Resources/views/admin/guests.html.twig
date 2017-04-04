@@ -3,6 +3,19 @@
     <div class="container">
         <h1>Admin Area</h1>
 
+        <h2>Summary</h2>
+        <table class="table">
+            <tr>
+                <th>Potential Day Guests</th>
+                <td>{{ numAttendingDay + numInvitedDayNoRSVP }}</td>
+            </tr>
+            <tr>
+                <th>Potential Evening Guests</th>
+                <td>{{ numAttendingEvening + numInvitedEveningNoRSVP }}</td>
+            </tr>
+        </table>
+
+        <h2>Guests</h2>
         <table class="table">
             <tr>
                 <th><a href="/admin/guests/show/name">First Name</a></th>
