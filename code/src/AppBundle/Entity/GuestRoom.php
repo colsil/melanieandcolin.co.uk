@@ -35,6 +35,13 @@ class GuestRoom
     private $guest;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="number", type="integer")
+     */
+    private $number;
+
+    /**
      * @return Guest
      */
     public function getGuest()
@@ -85,6 +92,28 @@ class GuestRoom
         return $this->type;
     }
 
+    /**
+     * Get number
+     *
+     * @return int
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * Set the number of rooms being booked
+     *
+     * @param $number the number of rooms being booked
+     * @return GuestRoom
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
 
 
 }

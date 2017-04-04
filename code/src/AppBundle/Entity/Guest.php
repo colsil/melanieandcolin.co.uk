@@ -38,7 +38,7 @@ class Guest extends BaseUser
     private $surname;
 
     /**
-     * @ORM\OneToMany(targetEntity="GuestRoom", mappedBy="guest")
+     * @ORM\OneToMany(targetEntity="GuestRoom", mappedBy="guest", cascade={"persist"})
      */
     private $rooms;
 
@@ -84,14 +84,14 @@ class Guest extends BaseUser
     private $masterGuest;
 
 
-
     /**
      *
      * @ORM\OneToMany(targetEntity="Guest", mappedBy="masterGuest")
      */
     private $plusOnes;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->plusOnes = new ArrayCollection();
         $this->rooms = new ArrayCollection();
@@ -306,7 +306,8 @@ class Guest extends BaseUser
      *
      * @return Guest
      */
-    public function setRSVPReceived($rsvpReceived) {
+    public function setRSVPReceived($rsvpReceived)
+    {
         $this->rsvpReceived = $rsvpReceived;
 
         return $this;
@@ -327,7 +328,8 @@ class Guest extends BaseUser
      *
      * @return bool
      */
-    public function isMasterGuest() {
+    public function isMasterGuest()
+    {
         if ($this->plusOnes->count() > 0) {
             return true;
         }
@@ -339,7 +341,8 @@ class Guest extends BaseUser
      *
      * @param $guestid
      */
-    public function addPlusOne($guestId) {
+    public function addPlusOne($guestId)
+    {
         $this->plusOnes->add($guestId);
         return;
     }
@@ -349,7 +352,8 @@ class Guest extends BaseUser
      *
      * @return ArrayCollection
      */
-    public function getPlusOnes() {
+    public function getPlusOnes()
+    {
         return $this->plusOnes;
     }
 
@@ -359,7 +363,8 @@ class Guest extends BaseUser
      * @param $guest
      * @return $guest
      */
-    public function setMasterGuest($guest) {
+    public function setMasterGuest($guest)
+    {
         $this->masterGuest = $guest;
         return $this;
     }
@@ -370,7 +375,39 @@ class Guest extends BaseUser
      *
      * @return mixed
      */
-    public function getMasterGuest() {
+    public function getMasterGuest()
+    {
         return $this->masterGuest;
     }
+
+    /**
+     * Get the room bookings for this guest
+     *
+     * @return ArrayCollection
+     */
+    public function getRooms()
+    {
+        return $this->rooms;
+    }
+
+    /**
+     * Add a room booking
+     *
+     * @param GuestRoom $room
+     * @return bool
+     */
+    public function addRoom(GuestRoom $room) {
+        return $this->rooms->add($room);
+    }
+
+    /**
+     * Remove a room booking
+     *
+     * @param GuestRoom $room
+     * @return bool
+     */
+    public function removeGuestRoom(GuestRoom $room) {
+        return $this->rooms->removeElement($room);
+    }
+
 }

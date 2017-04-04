@@ -1,0 +1,11 @@
+<div class="roomlisting form-group">
+    {{ form_label(item.type, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+    <div class="col-sm-2 col-lg-2">
+        {{ form_widget(item.type, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+    {{ form_label(item.number, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+    <div class="col-sm-2 col-lg-2">
+        {{ form_widget(item.number, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+</div>

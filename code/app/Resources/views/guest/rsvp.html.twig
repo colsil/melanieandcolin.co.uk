@@ -62,11 +62,35 @@
             {% do form.PlusOnes.setrendered %}
         {% endif %}
 
+        <h1>Room Bookings</h1>
+
+        <div class="form-group">
+            {# store the prototype on the data-prototype attribute #}
+            <div id="rooms-list"
+                 data-prototype="{% filter escape %}
+                    {% include 'guest/rsvp_room_booking_prototype.html.twig' with { 'item': form.rooms.vars.prototype } %}
+                {% endfilter %}"
+            >
+                {% for room in form.rooms %}
+                    {% include 'guest/rsvp_room_booking_prototype.html.twig' with { 'item': room } %}
+                {% endfor %}
+            </div>
+
+            <button class="col-lg-2 col-lg-offset-2 btn btn-primary" id="add-another-room">Add A Room Booking</button>
+        </div>
+
         <div class="form-group">
             <div class="form-group">
                 {{ form_widget(form.saveRSVP, { 'attr': { 'class' : 'col-lg-10 col-lg-offset-2 btn btn-success'}}) }}
             </div>
         </div>
+        {% do form.rooms.setrendered %}
         {{ form_end(form) }}
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@AppBundle/Resources/js/rsvp.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

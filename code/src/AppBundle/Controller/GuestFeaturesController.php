@@ -19,6 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class GuestFeaturesController extends Controller
 {
@@ -29,20 +30,39 @@ class GuestFeaturesController extends Controller
     {
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guest = $guestRepository->findOneBy(['username' => $this->getUser()->getUsername()]);
+        $originalRooms = new ArrayCollection();
+
+        // Create an ArrayCollection of the current room objects in the database
+        foreach ($guest->getRooms() as $room) {
+            $originalRooms->add($room);
+        }
 
         $rsvpForm = $this->createForm(RSVPFormType::class, $guest);
 
         $rsvpForm->handleRequest($request);
 
         if ($rsvpForm->isSubmitted() && $rsvpForm->isValid()) {
-            $guest = $rsvpForm->getData();
-            $guest->setRSVPReceived(true);
-            $plusones = $guest->getPlusOnes();
+            $em = $this->getDoctrine()->getManager();
+            $new_guest = $rsvpForm->getData();
+            $new_guest->setRSVPReceived(true);
+            $plusones = $new_guest->getPlusOnes();
             foreach ($plusones as $plusone) {
                 $plusone->setRSVPReceived(true);
             }
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($guest);
+
+            $rooms = $new_guest->getRooms();
+
+            foreach ($rooms as $room) {
+                $room->setGuest($new_guest);
+            }
+
+            foreach ($originalRooms as $original) {
+                if (false === $rooms->contains($original)) {
+                    $em->remove($original);
+                }
+            }
+
+            $em->persist($new_guest);
             $em->flush();
             return $this->redirectToRoute('thanks');
         }

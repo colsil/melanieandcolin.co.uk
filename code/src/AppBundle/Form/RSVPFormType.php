@@ -8,11 +8,13 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Guest;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RSVPFormType extends AbstractType
 {
@@ -35,5 +37,22 @@ class RSVPFormType extends AbstractType
             'entry_type' => PlusOneFormType::class
         ));
 
+        $builder->add(
+            'rooms',
+            CollectionType::class,
+            array(
+                'entry_type' => GuestRoomBookingFormType::class,
+                'allow_add' => true,
+                'allow_delete' => true
+            )
+        );
+
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Guest::class,
+        ));
     }
 }
