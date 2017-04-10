@@ -46,6 +46,12 @@ class AdminController extends Controller
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guests = $guestRepository->findBy(array(), array($sort => $direction));
 
+        $roomRepository = $this->getDoctrine()->getRepository('AppBundle:GuestRoom');
+        $singleRooms = $roomRepository->getRoomCount('Single');
+        $doubleRooms = $roomRepository->getRoomCount('Double');
+
+
+
         $numInvitedDay = count($guestRepository->findBy(['invitedday' => 1]));
         $numAttendingDay = count($guestRepository->findBy(['attendingday' => 1]));
         $numInvitedEvening = count($guestRepository->findBy(['invitedevening' => 1]));
@@ -91,7 +97,9 @@ class AdminController extends Controller
                 'numInvitedEvening' => $numInvitedEvening,
                 'numAttendingEvening' => $numAttendingEvening,
                 'numInvitedDayNoRSVP' => $numInvitedDayNoRSVP,
-                'numInvitedEveningNoRSVP' => $numInvitedEveningNoRSVP
+                'numInvitedEveningNoRSVP' => $numInvitedEveningNoRSVP,
+                'doubleRooms' => $doubleRooms,
+                'singleRooms' => $singleRooms
             )
         );
     }
