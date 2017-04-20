@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="whatcontainer" class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% image '@AppBundle/Resources/images/banner1.png' %}
+                <img class="center-block img-responsive banner-small" src="{{ asset_url }}" alt="Colin and Mel Banner">
+                {% endimage %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="text-center">Gifts</h1>
+                <p class="text-center">We really are very fortunate to be in a position where we don't need any gifts to
+                    set us up for married life. Instead, it would mean alot to us to make a contribution towards a
+                    charity which is close to our hearts.</p>
+                <p class="text-center">
+                    Both Mel and Colin have friends who have suffered from depression, anxiety or other forms of mental
+                    illness, and it's a subject which is often not discussed or treated as seriously as physical
+                    illnesses. Mind do great work to support those with mental health issues, as well as raising
+                    awareness and supporting those who care for others.</p>
+                <p class="text-center">
+                    <a href="https://www.justgiving.com/fundraising/melanieandcolin">
+                        <button class="btn btn-success">Donate
+                            to Mind
+                        </button>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
