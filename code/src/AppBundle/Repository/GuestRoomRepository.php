@@ -10,10 +10,15 @@ namespace AppBundle\Repository;
  */
 class GuestRoomRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getRoomCount($type) {
+    public function getRoomCount($type)
+    {
         $em = $this->getEntityManager();
 
-        $query = $em->createQuery('SELECT sum(number) WHERE type = ?');
-        return $query->execute([ $type ]);
+        $queryBuilder = $em->createQueryBuilder()
+            ->select('sum(g.number)')
+            ->from('AppBundle\Entity\GuestRoom', 'g')
+            ->where('g.type = :type');
+        $queryBuilder->setParameter('type',$type);
+        return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 }
