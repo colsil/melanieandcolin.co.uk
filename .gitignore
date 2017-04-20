@@ -21,3 +21,8 @@ code/web/css
 code/web/fonts
 code/tests/_support/_generated
 travis_key.rsa
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
