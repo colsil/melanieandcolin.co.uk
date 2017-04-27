@@ -78,6 +78,29 @@ class Guest extends BaseUser
     private $rsvpReceived = 0;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="dietary_notes", type="text")
+     */
+    private $dietary = "";
+
+    /**
+     * @return string
+     */
+    public function getDietary()
+    {
+        return $this->dietary;
+    }
+
+    /**
+     * @param string $dietary
+     */
+    public function setDietary($dietary)
+    {
+        $this->dietary = $dietary;
+    }
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="vegetarian", type="boolean")

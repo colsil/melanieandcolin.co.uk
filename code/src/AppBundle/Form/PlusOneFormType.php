@@ -28,9 +28,14 @@ class PlusOneFormType extends AbstractType
                         'label' => "Attending Day",
                         'required' => false
                     )
-                )
-                ->add('vegetarian', CheckboxType::class, array(
+                )->add('vegetarian', CheckboxType::class, array(
                         'label' => "Vegetarian meal option",
+                        'required' => false
+                    )
+                )->add('dietary',
+                    TextType::class,
+                    array(
+                        'label' => "Other Allergies / Dietary Requirements",
                         'required' => false
                     )
                 );

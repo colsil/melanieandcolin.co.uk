@@ -44,6 +44,7 @@ CREATE TABLE `guest` (
   `rsvp_received` tinyint(1) NOT NULL,
   `masterGuestId` int(11) DEFAULT NULL,
   `vegetarian` tinyint(1) NOT NULL,
+  `dietary_notes` longtext COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_ACB79A3592FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_ACB79A35A0D96FBF` (`email_canonical`),
@@ -59,7 +60,7 @@ CREATE TABLE `guest` (
 
 LOCK TABLES `guest` WRITE;
 /*!40000 ALTER TABLE `guest` DISABLE KEYS */;
-INSERT INTO `guest` VALUES (3,'Testy','McTestface','test@example.com','$2y$13$WzOY7I/BA3MAUeO/Z/9hauea4R7bKGIxUib0Irdqtc1kGf0QQXQT2',1,1,0,0,'test@example.com','test@example.com','test@example.com',1,'6z4hy7bc7e4ogwwk08ock4048oocoko','2017-04-10 22:33:49',NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',1,NULL,0),(4,'Another','Test','test2@example.com','$2y$13$okml/vvqb23CT.wxg4KKGODZKhT9mLOnSvcXDsuhpE8Zzs6Cbd3ga',0,1,0,0,'test2@example.com','test2@example.com','test2@example.com',0,'lgtfc7zq9m8ow0co0w0sw44s8goggkk',NULL,NULL,NULL,'a:0:{}',0,NULL,0),(5,'Geoff','Geofferson','geoff@example.com','$2y$13$eXtRKkQelCkOVX2W9z9.ZOP7o1XrWtLFRrKRpUUu6x9Lx/0sQrECa',1,1,0,0,'geoff@example.com','geoff@example.com','geoff@example.com',0,'hfqfi5jmbagoss4o4swgs0oos8sk8ko',NULL,NULL,NULL,'a:0:{}',0,NULL,0),(6,'Geoffery','Geoff','geoff2@example.com','$2y$13$bMJ9VFSav7uGgkmkdevTx.M03FtN2C8ppN6nYkRPHo930WYEU2/EW',1,1,1,1,'geoff2@example.com','geoff2@example.com','geoff2@example.com',0,'g2stzlavz00s4gsc0040c48c08so00k',NULL,NULL,NULL,'a:0:{}',1,NULL,0),(7,'Melly','Mellyface','mellyface@example.com','$2y$13$1h.6SVfkB.ww2UcGtO3GvOl/1YoiC7pBMCsW81X0lfNtnksFmCQdq',0,1,0,1,'mellyface@example.com','mellyface@example.com','mellyface@example.com',0,'hk4h1dp7c9skk0gwgc44c040kskoww0',NULL,NULL,NULL,'a:0:{}',1,3,0),(8,'flah','vaaca','flah@ascas.com','$2y$13$cpdjlGNSwOIz/rTkaF0kXuufeinA2maYs0mLfpz.Qn4LMB7F1Zl1.',1,0,0,0,'flah@ascas.com','flah@ascas.com','flah@ascas.com',0,NULL,NULL,NULL,NULL,'a:0:{}',0,NULL,0);
+INSERT INTO `guest` VALUES (3,'Testy','McTestface','test@example.com','$2y$13$WzOY7I/BA3MAUeO/Z/9hauea4R7bKGIxUib0Irdqtc1kGf0QQXQT2',1,1,0,0,'test@example.com','test@example.com','test@example.com',1,'6z4hy7bc7e4ogwwk08ock4048oocoko','2017-04-27 12:27:19',NULL,NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',1,NULL,0,'won\'t eat fishcakes'),(4,'Another','Test','test2@example.com','$2y$13$okml/vvqb23CT.wxg4KKGODZKhT9mLOnSvcXDsuhpE8Zzs6Cbd3ga',0,1,0,0,'test2@example.com','test2@example.com','test2@example.com',0,'lgtfc7zq9m8ow0co0w0sw44s8goggkk',NULL,NULL,NULL,'a:0:{}',0,NULL,0,''),(5,'Geoff','Geofferson','geoff@example.com','$2y$13$eXtRKkQelCkOVX2W9z9.ZOP7o1XrWtLFRrKRpUUu6x9Lx/0sQrECa',1,1,0,0,'geoff@example.com','geoff@example.com','geoff@example.com',0,'hfqfi5jmbagoss4o4swgs0oos8sk8ko',NULL,NULL,NULL,'a:0:{}',0,NULL,0,''),(6,'Geoffery','Geoff','geoff2@example.com','$2y$13$bMJ9VFSav7uGgkmkdevTx.M03FtN2C8ppN6nYkRPHo930WYEU2/EW',1,1,1,1,'geoff2@example.com','geoff2@example.com','geoff2@example.com',0,'g2stzlavz00s4gsc0040c48c08so00k',NULL,NULL,NULL,'a:0:{}',1,NULL,0,''),(7,'Melly','Mellyface','mellyface@example.com','$2y$13$1h.6SVfkB.ww2UcGtO3GvOl/1YoiC7pBMCsW81X0lfNtnksFmCQdq',1,1,0,0,'mellyface@example.com','mellyface@example.com','mellyface@example.com',0,'hk4h1dp7c9skk0gwgc44c040kskoww0',NULL,NULL,NULL,'a:0:{}',1,3,0,'Only eats snails'),(8,'flah','vaaca','flah@ascas.com','$2y$13$cpdjlGNSwOIz/rTkaF0kXuufeinA2maYs0mLfpz.Qn4LMB7F1Zl1.',1,0,0,0,'flah@ascas.com','flah@ascas.com','flah@ascas.com',0,NULL,NULL,NULL,NULL,'a:0:{}',0,NULL,0,'');
 /*!40000 ALTER TABLE `guest` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +111,7 @@ CREATE TABLE `migration_versions` (
 
 LOCK TABLES `migration_versions` WRITE;
 /*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
-INSERT INTO `migration_versions` VALUES ('20160525223854'),('20160613200631'),('20160901192059'),('20160909153010'),('20161023232820'),('20170112220234'),('20170402123243'),('20170404204742'),('20170421103530');
+INSERT INTO `migration_versions` VALUES ('20160525223854'),('20160613200631'),('20160901192059'),('20160909153010'),('20161023232820'),('20170112220234'),('20170402123243'),('20170404204742'),('20170421103530'),('20170427204904');
 /*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -123,4 +124,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-27 10:50:43
+-- Dump completed on 2017-04-27 22:02:59
