@@ -36,7 +36,7 @@ class GuestRoomBookingFormType extends AbstractType
             ->add(
                 'number',
                 IntegerType::class,
-                array('label' => "Number", 'required' => true)
+                array('label' => "Number of Rooms Required", 'required' => true)
             );
     }
 
