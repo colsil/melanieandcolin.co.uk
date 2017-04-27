@@ -12,8 +12,15 @@
                     {{ form_widget(form.attendingday, { 'attr': {'class': 'form-control' } }) }}
                 </div>
             </div>
+            <div class="form-group">
+                {{ form_label(form.vegetarian, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+                <div class="col-sm-10 col-lg-10">
+                    {{ form_widget(form.vegetarian, { 'attr': {'class': 'form-control' } }) }}
+                </div>
+            </div>
         {% else %}
             {% do form.attendingday.setRendered %}
+            {% do form.vegetarian.setRendered %}
         {% endif %}
         {% if app.user.invitedevening %}
             <div class="form-group">
@@ -46,6 +53,12 @@
                         {{ form_label(plusone.attendingday, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
                         <div class="col-sm-10 col-lg-10">
                             {{ form_widget(plusone.attendingday, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(plusone.vegetarian, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
+                        <div class="col-sm-10 col-lg-10">
+                            {{ form_widget(plusone.vegetarian, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
                 {% endif %}

@@ -78,6 +78,29 @@ class Guest extends BaseUser
     private $rsvpReceived = 0;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="vegetarian", type="boolean")
+     */
+    private $vegetarian = 0;
+
+    /**
+     * @return bool
+     */
+    public function getVegetarian()
+    {
+        return $this->vegetarian;
+    }
+
+    /**
+     * @param bool $vegetarian
+     */
+    public function setVegetarian($vegetarian)
+    {
+        $this->vegetarian = $vegetarian;
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity="Guest", inversedBy="plusOnes")
      * @ORM\JoinColumn(name="masterGuestId", referencedColumnName="id")
      */

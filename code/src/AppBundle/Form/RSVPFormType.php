@@ -31,6 +31,11 @@ class RSVPFormType extends AbstractType
                 CheckboxType::class,
                 array('label' => "Attending - Day", 'required' => false)
             )
+            ->add('vegetarian', CheckboxType::class, array(
+                    'label' => "I'd like the vegetarian meal",
+                    'required' => false
+                )
+            )
             ->add('saveRSVP', SubmitType::class, array('label' => 'Save RSVP'));
 
         $builder->add('PlusOnes', CollectionType::class, array(

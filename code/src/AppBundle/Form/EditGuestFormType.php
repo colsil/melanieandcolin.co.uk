@@ -16,8 +16,21 @@ class EditGuestFormType extends RegistrationFormType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder,$options);
+        parent::buildForm($builder, $options);
 
-        $builder->add('rsvpReceived', CheckboxType::class, array('label' => "RSVP Received", 'required' => false));
+        $builder->add(
+            'rsvpReceived',
+            CheckboxType::class,
+            array(
+                'label' => "RSVP Received",
+                'required' => false
+            )
+        )->add(
+            'vegetarian',
+            CheckboxType::class, array(
+                'label' => "Vegetarian meal",
+                'required' => false
+            )
+        );
     }
 }

@@ -28,6 +28,11 @@ class PlusOneFormType extends AbstractType
                         'label' => "Attending Day",
                         'required' => false
                     )
+                )
+                ->add('vegetarian', CheckboxType::class, array(
+                        'label' => "Vegetarian meal option",
+                        'required' => false
+                    )
                 );
             }
             if ($guest->getInvitedEvening()) {
