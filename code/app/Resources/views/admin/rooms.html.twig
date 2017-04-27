@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Admin Area</h1>
+
+        <h2>Room Bookings</h2>
+        <table class="table">
+            <tr>
+                <th>Guest</th>
+                <th>Room Type</th>
+                <th>Number Booked</th>
+            </tr>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{ room.guest.name }} {{ room.guest.surname }}</td>
+                    <td>{{ room.type }}</td>
+                    <td>{{ room.number }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

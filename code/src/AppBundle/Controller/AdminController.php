@@ -36,10 +36,29 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/admin/rooms/show", name="rooms")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function rooms(Request $request) {
+        $roomRepository = $this->getDoctrine()->getRepository('AppBundle:GuestRoom');
+
+        $rooms = $roomRepository->findAll();
+
+
+        return $this->render(
+            'admin/rooms.html.twig',
+            array(
+                'rooms' => $rooms
+            )
+        );
+    }
+
+    /**
      * @Route("/admin/guests/show/{sort}/{direction}", name="guests")
      * @param Request $request
      * @param string $sort
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function guests(Request $request, $sort = 'surname', $direction = 'ASC')
     {
