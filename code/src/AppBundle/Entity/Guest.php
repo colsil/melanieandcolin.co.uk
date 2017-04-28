@@ -80,9 +80,9 @@ class Guest extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="dietary_notes", type="text")
+     * @ORM\Column(name="dietary_notes", type="text", nullable=true)
      */
-    private $dietary = "";
+    private $dietary = null;
 
     /**
      * @return string
