@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 5.7.16, for osx10.11 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.18, for osx10.12 (x86_64)
 --
 -- Host: localhost    Database: weddingsite
 -- ------------------------------------------------------
@@ -111,8 +111,33 @@ CREATE TABLE `migration_versions` (
 
 LOCK TABLES `migration_versions` WRITE;
 /*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
-INSERT INTO `migration_versions` VALUES ('20160525223854'),('20160613200631'),('20160901192059'),('20160909153010'),('20161023232820'),('20170112220234'),('20170402123243'),('20170404204742'),('20170421103530'),('20170427204904'),('20170428141618');
+INSERT INTO `migration_versions` VALUES ('20160525223854'),('20160613200631'),('20160901192059'),('20160909153010'),('20161023232820'),('20170112220234'),('20170402123243'),('20170404204742'),('20170421103530'),('20170427204904'),('20170428141618'),('20170513140342');
 /*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sessions`
+--
+
+DROP TABLE IF EXISTS `sessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sessions` (
+  `sess_id` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `sess_data` blob NOT NULL,
+  `sess_time` int(10) unsigned NOT NULL,
+  `sess_lifetime` int(11) NOT NULL,
+  PRIMARY KEY (`sess_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sessions`
+--
+
+LOCK TABLES `sessions` WRITE;
+/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -124,4 +149,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-28 15:17:17
+-- Dump completed on 2017-05-13 15:17:23
