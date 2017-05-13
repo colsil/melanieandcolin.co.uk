@@ -55,6 +55,13 @@ class WelcomeController extends Controller
     }
 
     /**
+     * @Route("/what/food", name="food")
+     */
+    public function food() {
+        return $this->render( 'food.html.twig');
+    }
+
+    /**
      * @Route("/when")
      */
     public function when() {

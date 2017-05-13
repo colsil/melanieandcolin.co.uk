@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="D7c-xPy30b0cwHN8KptEnWmiikLPrGcI_76RXf8S-BU" />
+    <meta name="google-site-verification" content="D7c-xPy30b0cwHN8KptEnWmiikLPrGcI_76RXf8S-BU"/>
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
         {% stylesheets
@@ -40,13 +40,21 @@
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="/">Home</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Where<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">Where<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/where">Location</a></li>
                                 <li><a href="/where/accomodation">Accomodation</a></li>
                             </ul>
                         </li>
-                        <li><a href="/what">What</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">What<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/what">Gifts</a></li>
+                                <li><a href="/what/food">Food</a></li>
+                            </ul>
+                        </li>
                         <li><a href="/when">When</a></li>
                     </ul>
                     {% if is_granted("ROLE_USER") %}
@@ -77,7 +85,8 @@
                             <li><a href="/admin/guests/show">Admin Guests</a></li>
                             <li><a href="/admin/rooms/show">Rooms</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Email Lists<span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Email Lists<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/admin/emails">All</a></li>
                                     <li role="separator" class="divider"></li>

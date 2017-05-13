@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="whatcontainer" class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% image '@AppBundle/Resources/images/banner2.png' %}
+                <img class="center-block img-responsive banner-small" src="{{ asset_url }}"
+                     alt="Colin and Mel Banner 2">
+                {% endimage %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="text-center">Menu</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-center">Starter</h2>
+                <p class="text-center">Chargrilled Cantaloupe Melon with Fig Salsa, Toasted Wallnuts and Soft Herbs</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-center">Main</h2>
+                <p class="text-center">Rib Eye Steak Rossini with Celeriac Purée, Dauphinoise Potatoes and Madeira
+                    Sauce</p>
+                <p class="text-center">
+                    or
+                </p>
+                <p class="text-center">Butternut Squash and Aubergine Tower topped with Buffalo Mozzarella with Potato
+                    Rosti, Roast Onion Purée and Rosemary Oil</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-center">Dessert</h2>
+                <p class="text-center">Passionfruit and Citrus Cheesecake</p>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
