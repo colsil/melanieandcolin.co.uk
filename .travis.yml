@@ -15,10 +15,15 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_a2051fc99353_key -iv $encrypted_a2051fc99353_iv
   -in build/sshkeys/travis_key.rsa.enc -out build/sshkeys/travis_key.rsa -d
 - mysql -u root -e 'create database weddingsite character set utf8mb4;'
-after_success:
-- php bin/console server:stop
-- cd ../
-- chmod 600 build/sshkeys/travis_key.rsa
-- build/deploy.sh
-addons:
-  ssh_known_hosts: melanieandcolin.uk
+deploy:
+  skip_cleanup: true
+  provider: elasticbeanstalk
+  access_key_id: AKIAIJSEMFIZUI6YICEA
+  secret_access_key:
+    secure: "E3/KK3iOU2ZMPLzax1d4ZSXW4ryf/7VjwmXpmI8ROFbqR6iyykzwQccBZaIfoea3CCYLalnoXZvRKJseZywWXCuPcLrcczHk3M8RrORSBVaAuVmnA65lChV/un8Sme8TSOkhtg/Ex2ujBGl+JQHHbbRBzWO10h/k6gYjZjsnQ46YCGNzBUjYLv9UEW1zIAv20j87foaChJH84iSepmhLKdHdZoUm7LXOI8DSmZQP3X3jJHNQ1NPfaCTfDBgWsDPJkjZifjBH7rxb7Ie5wrY4e3/9V4o1eAhVNPBQxAf+SVcXw8auU3NONt7M0Vp7wM6US7A/GReZY7+gENqmDQ+3c4ntwL6+HoQb4JnmuBhn6lTxRla8CRcRca1rGsDaGRCM5AANEg+ygfgLs68CZ7kp5ktHaGv1SNwEHoh33Rj9I117mQdC7TZ7J/Iw3tazmu+UvnhRWdcyoscwrB0Qd9ERcfsbwwhS67daecfUNvlIZbmMpkqz0mioWiH5qnwHOOOG2MknrqaqEAR9QX26qcLMx+/iXaEVbiH5DWouk94GsvdnPL1/JDpo08U+iuLt52Y3T8W8jjpZRY8fahVWC911V5qCgkdlFY0scbPJ8uIhwX4EdA6lzM/13KpQDPxNtRAIyK+TolHgOqNVizxghQ6mPZtuCamGqTd2uvC/Iz33kcQ="
+  region: "eu-west-2"
+  app: "melanieandcolin"
+  env: "e-iks3dhkmei"
+  bucket_name: "melanieandcolin"
+  on:
+    branch: master
