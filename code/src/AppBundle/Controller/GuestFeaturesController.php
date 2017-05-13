@@ -124,4 +124,13 @@ class GuestFeaturesController extends Controller
             'guest/thanks.html.twig'
         );
     }
+
+    /**
+     * @Route("/guest/contact", name="contact")
+     */
+    public function contact() {
+        return $this->render( 'guest/contact.html.twig', [
+            'email' => $this->getParameter("email_address")
+        ]);
+    }
 }
