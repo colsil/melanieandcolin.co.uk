@@ -24,6 +24,7 @@ deploy:
   region: eu-west-2
   app: melanieandcolin
   env: Custom-env
+  bucket_name: melanieandcolin
   on:
     repo: colsil/melanieandcolin.co.uk
 
