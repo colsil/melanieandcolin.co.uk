@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 
 /**
  * GuestRepository
@@ -10,4 +11,20 @@ namespace AppBundle\Repository;
  */
 class GuestRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getDayGuestsForEmails()
+    {
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMappingBuilder($em);
+        $rsm->addRootEntityFromClassMetadata('AppBundle\Entity\Guest', 'g');
+
+        $query = $em->createNativeQuery('SELECT *
+                                    FROM guest
+                                    WHERE (rsvp_received = 1 AND attendingday = 1) 
+                                      OR (invitedday = 1 AND rsvp_received = 0)
+                              ', $rsm);
+        $guests = $query->getResult();
+
+        return $guests;
+    }
 }

@@ -183,4 +183,22 @@ class AdminController extends Controller
         );
     }
 
+    /**
+     * Renders a list of emails (without guests plusones) for feeding to mailchimp as a csv
+     * EXCLUDES those who have rsvp'd no
+     *
+     * @Route("/admin/attendingDay/emails")
+     */
+    public function getEmailListExcludingDeclined() {
+        $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
+        $guests = $guestRepository->getDayGuestsForEmails();
+
+        return $this->render(
+                'admin/emails.html.twig',
+                array(
+                    'guests' => $guests
+                )
+        );
+    }
+
 }
