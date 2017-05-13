@@ -20,10 +20,10 @@ deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIJSEMFIZUI6YICEA
   secret_access_key:
-    secure: "E3/KK3iOU2ZMPLzax1d4ZSXW4ryf/7VjwmXpmI8ROFbqR6iyykzwQccBZaIfoea3CCYLalnoXZvRKJseZywWXCuPcLrcczHk3M8RrORSBVaAuVmnA65lChV/un8Sme8TSOkhtg/Ex2ujBGl+JQHHbbRBzWO10h/k6gYjZjsnQ46YCGNzBUjYLv9UEW1zIAv20j87foaChJH84iSepmhLKdHdZoUm7LXOI8DSmZQP3X3jJHNQ1NPfaCTfDBgWsDPJkjZifjBH7rxb7Ie5wrY4e3/9V4o1eAhVNPBQxAf+SVcXw8auU3NONt7M0Vp7wM6US7A/GReZY7+gENqmDQ+3c4ntwL6+HoQb4JnmuBhn6lTxRla8CRcRca1rGsDaGRCM5AANEg+ygfgLs68CZ7kp5ktHaGv1SNwEHoh33Rj9I117mQdC7TZ7J/Iw3tazmu+UvnhRWdcyoscwrB0Qd9ERcfsbwwhS67daecfUNvlIZbmMpkqz0mioWiH5qnwHOOOG2MknrqaqEAR9QX26qcLMx+/iXaEVbiH5DWouk94GsvdnPL1/JDpo08U+iuLt52Y3T8W8jjpZRY8fahVWC911V5qCgkdlFY0scbPJ8uIhwX4EdA6lzM/13KpQDPxNtRAIyK+TolHgOqNVizxghQ6mPZtuCamGqTd2uvC/Iz33kcQ="
-  region: "eu-west-2"
-  app: "melanieandcolin"
-  env: "e-iks3dhkmei"
-  bucket_name: "melanieandcolin"
+    secure: Uvdwhl/sL9ThQ241hnR/RXZJC7nEUPHsptxaBh60rlKsvWqdGZqozyeebewRBcB6nJlcq37xHtBs+bi3ApIFCKDuJ/O1oim8B4SyV6nMhdqoapo/f/RWzSzyrGstK56Ev24GDK8klOZ/fiFg5kiL60dGRAvm9OR+26TrhAsannuJAjTjv7Evh9uDljC83QDaSHDViX3oo/IZU88xRN0MnhLsTYFgySGVlVrpXsxFNRGbOrMps01Wc5FfHb6nlnbD3Zs4Kj58H2gmIAVCzswCx+pGuK3TnJ1fXVyqZ85Y9Psb5hnO7+3juoaSiTXlk+a/hF8u2lZR3TLSZjFMm74IBtwYHFhag5hja/TGgjlMjgZXVR3u86AZCmaBS2EK5/HgZVjXHd3USgp+QGE+d+4JjCKrb0LGBChs7xk85C5/nQnDQQuibM3E4Me1yavMyCXVbGpD4HCo6tC+3M+cCnAt/tutgyObg01Ugv/R5bdYJCA3v3aj7oLjL2pkGRoQRTlq/HVWOYO/03FVyZscVU0UANQQDk3KKiKwWMQ/wLm4XNufo+1C2UVjMTUqbTUX2xn3wADW7JNsNLjbMvNQJqjouaAaNJrvtV2lvFFVLNGXkjzGR/oeO+2ob8vhIKxsJseo5dTMVlV+qmxuOHi5SiVbjAFOr9M0/pisNn1zFi+YZTg=
+  region: eu-west-2
+  app: melanieandcolin
+  env: Custom-env
   on:
-    branch: master
+    repo: colsil/melanieandcolin.co.uk
+
