@@ -13,8 +13,7 @@ script:
 - ./vendor/bin/codecept run
 before_deploy:
 - php bin/console server:stop
-- cd ..
-- zip -rq code.zip code
+- zip -rq code.zip ./*
 before_install:
 - openssl aes-256-cbc -K $encrypted_a2051fc99353_key -iv $encrypted_a2051fc99353_iv
   -in build/sshkeys/travis_key.rsa.enc -out build/sshkeys/travis_key.rsa -d
