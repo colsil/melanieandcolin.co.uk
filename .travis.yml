@@ -4,10 +4,7 @@ php:
 services:
 - mysql
 env:
-  - DATABASE_HOST="127.0.0.1"
-  - DATABASE_NAME="weddingsite"
-  - DATABASE_USER="root"
-  - DATABASE_PASSWORD=""
+  - DATABASE_HOST="127.0.0.1" DATABASE_NAME="weddingsite" DATABASE_USER="root" DATABASE_PASSWORD=""
 install:
 - cd code
 - composer install
