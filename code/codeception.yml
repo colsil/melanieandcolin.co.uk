@@ -10,7 +10,6 @@ settings:
     colors: true
     memory_limit: 1024M
 params:
-  - app/config/parameters.yml
   - env
 extensions:
     enabled:
@@ -20,7 +19,8 @@ modules:
         Db:
             dsn: 'mysql:host=%DATABASE_HOST%;dbname=%DATABASE_NAME%'
             user: '%DATABASE_USER%'
-            password: ~
+            password: '%DATABASE_PASSWORD%'
             dump: tests/_data/dump.sql
+            populate: true
     enabled:
       - Db
