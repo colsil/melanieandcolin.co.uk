@@ -4,7 +4,7 @@ php:
 services:
 - mysql
 env:
-  - DATABASE_HOST="localhost" DATABASE_NAME="weddingsite" DATABASE_USER="root"
+  - DATABASE_HOST="localhost" DATABASE_NAME="weddingsite" DATABASE_USER="test" DATABASE_PASSWORD="tests"
 install:
 - cd code
 - composer install
@@ -20,6 +20,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_a2051fc99353_key -iv $encrypted_a2051fc99353_iv
   -in build/sshkeys/travis_key.rsa.enc -out build/sshkeys/travis_key.rsa -d
 - mysql -u root -e 'create database weddingsite character set utf8mb4;'
+- mysql -u root -e 'grant all privileges on weddingsite.* to "test"@"localhost" identified by "tests"; flush privileges;'
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIJSEMFIZUI6YICEA
