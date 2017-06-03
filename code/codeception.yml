@@ -11,15 +11,16 @@ settings:
     memory_limit: 1024M
 params:
   - app/config/parameters.yml
+  - env
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
 modules:
     config:
         Db:
-            dsn: 'mysql:host=localhost;dbname=weddingsite'
-            user: 'root'
-            password: ''
+            dsn: 'mysql:host=%DATABASE_HOST%;dbname=%DATABASE_NAME%'
+            user: '%DATABASE_USER%'
+            password: '%DATABASE_PASSWORD'
             dump: tests/_data/dump.sql
     enabled:
       - Db
