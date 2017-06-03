@@ -213,7 +213,8 @@ class AdminController extends Controller
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guests = $guestRepository->findBy([
             'invitedday' => False,
-            'invitedevening' => True
+            'invitedevening' => True,
+            'masterGuest' => null
         ]);
 
         return $this->render('admin/emails.html.twig', ['guests' => $guests]);
