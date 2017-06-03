@@ -40,7 +40,8 @@ class AdminController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function rooms(Request $request) {
+    public function rooms(Request $request)
+    {
         $roomRepository = $this->getDoctrine()->getRepository('AppBundle:GuestRoom');
 
         $rooms = $roomRepository->findAll();
@@ -70,14 +71,13 @@ class AdminController extends Controller
         $doubleRooms = $roomRepository->getRoomCount('Double');
 
 
-
         $numInvitedDay = count($guestRepository->findBy(['invitedday' => 1]));
         $numAttendingDay = count($guestRepository->findBy(['attendingday' => 1]));
         $numInvitedEvening = count($guestRepository->findBy(['invitedevening' => 1]));
         $numAttendingEvening = count($guestRepository->findBy(['attendingevening' => 1]));
 
-        $numInvitedDayNoRSVP = count($guestRepository->findBy([ 'invitedday' => 1, 'rsvpReceived' => 0]));
-        $numInvitedEveningNoRSVP = count($guestRepository->findBy([ 'invitedevening' => 1, 'rsvpReceived' => 0]));
+        $numInvitedDayNoRSVP = count($guestRepository->findBy(['invitedday' => 1, 'rsvpReceived' => 0]));
+        $numInvitedEveningNoRSVP = count($guestRepository->findBy(['invitedevening' => 1, 'rsvpReceived' => 0]));
 
         $form = $this->createForm(RegistrationFormType::class, null, ['guests' => $guests]);
 
@@ -189,16 +189,34 @@ class AdminController extends Controller
      *
      * @Route("/admin/attendingDay/emails")
      */
-    public function getEmailListExcludingDeclined() {
+    public function getEmailListExcludingDeclined()
+    {
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guests = $guestRepository->getDayGuestsForEmails();
 
         return $this->render(
-                'admin/emails.html.twig',
-                array(
-                    'guests' => $guests
-                )
+            'admin/emails.html.twig',
+            array(
+                'guests' => $guests
+            )
         );
+    }
+
+    /**
+     * Renders a list of emails (without guests plusones) for feeding to mailchimp as a csv
+     * Evening Guests only, no Day guests
+     *
+     * @Route("/admin/invitedEveningOnly/emails")
+     */
+    public function getEveningGuestEmails()
+    {
+        $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
+        $guests = $guestRepository->findBy([
+            'invitedday' => False,
+            'invitedevening' => True
+        ]);
+
+        return $this->render('admin/emails.html.twig', ['guests' => $guests]);
     }
 
 }
