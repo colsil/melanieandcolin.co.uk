@@ -20,6 +20,7 @@ modules:
         Db:
             dsn: 'mysql:host=%DATABASE_HOST%;dbname=%DATABASE_NAME%'
             user: '%DATABASE_USER%'
+            password: ~
             dump: tests/_data/dump.sql
     enabled:
       - Db
