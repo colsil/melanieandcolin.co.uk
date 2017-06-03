@@ -4,7 +4,7 @@
 parameters:
     database_driver:    pdo_mysql
     database_host:      '%env(DATABASE_HOST)%'
-    env(DATABASE_HOST): 'localhost'
+    env(DATABASE_HOST): localhost
     database_port:      3306
     database_name:      '%env(DATABASE_NAME)%'
     env(DATABASE_NAME): weddingsite
