@@ -17,9 +17,9 @@ extensions:
 modules:
     config:
         Db:
-            dsn: 'mysql:host=%database_host%;dbname=%database_name%'
-            user: '%database_user%'
-            password: '%database_password%'
+            dsn: 'mysql:host=localhost;dbname=weddingsite'
+            user: 'root'
+            password: ''
             dump: tests/_data/dump.sql
     enabled:
       - Db
