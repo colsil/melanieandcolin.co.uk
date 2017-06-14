@@ -56,6 +56,26 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/admin/food/show", name="foodchoices")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function food(Request $request) {
+        $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
+        $guests = $guestRepository->findBy(['attendingday' => 1]);
+
+        $vegetarians = count($guestRepository->findBy(['attendingday' => 1, 'vegetarian' => true]));
+
+        return $this->render(
+            'admin/guestfood.html.twig',
+            array(
+                'guests' => $guests,
+                'vegetarians' => $vegetarians
+            )
+        );
+    }
+
+    /**
      * @Route("/admin/guests/show/{sort}/{direction}", name="guests")
      * @param Request $request
      * @param string $sort

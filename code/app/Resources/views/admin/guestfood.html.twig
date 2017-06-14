@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Guest Food Choices</h1>
+
+        <h2>Summary</h2>
+        <table class="table">
+            <tr>
+                <th>Vegetarians</th>
+                <td>{{ vegetarians }}</td>
+            </tr>
+        </table>
+
+        <h2>Guests</h2>
+        <table class="table">
+            <tr>
+                <th>First Name</th>
+                <th>Surname</th>
+                <th>Guest Email</th>
+                <th>Vegetarian</th>
+                <th>Dietary Requirements</th>
+            </tr>
+            {% for guest in guests %}
+                <tr>
+                    <td>{{ guest.name }}</td>
+                    <td>{{ guest.surname }}</td>
+                    <td>{{ guest.email }}</td>
+                    <td>{% if guest.vegetarian == false %}
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        {% else %}
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        {% endif %}
+                    </td>
+                    <td>{{ guest.dietary }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
