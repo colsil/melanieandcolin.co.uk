@@ -215,7 +215,7 @@ class AdminController extends Controller
         $guests = $guestRepository->getDayGuestsForEmails();
 
         return $this->render(
-            'admin/emails.html.twig',
+            'admin/finalemails.html.twig',
             array(
                 'guests' => $guests
             )

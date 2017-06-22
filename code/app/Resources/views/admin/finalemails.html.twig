@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <pre>
+    {% for guest in guests %}
+        {{ guest.name }},{{ guest.surname }},{{ guest.email }},{{ guest.dietary }},
+        {%- if guest.vegetarian == 0 %}no{% else %}yes{% endif %}
+
+    {% endfor %}
+</pre>
+{% endblock %}
