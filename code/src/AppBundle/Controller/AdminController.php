@@ -165,17 +165,17 @@ class AdminController extends Controller
 
         if ($rsvpForm->isSubmitted() && $rsvpForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $new_guest = $rsvpForm->getData();
-            $new_guest->setRSVPReceived(true);
-            $plusones = $new_guest->getPlusOnes();
+            $guest = $rsvpForm->getData();
+            $guest->setRSVPReceived(true);
+            $plusones = $guest->getPlusOnes();
             foreach ($plusones as $plusone) {
                 $plusone->setRSVPReceived(true);
             }
 
-            $rooms = $new_guest->getRooms();
+            $rooms = $guest->getRooms();
 
             foreach ($rooms as $room) {
-                $room->setGuest($new_guest);
+                $room->setGuest($guest);
             }
 
             foreach ($originalRooms as $original) {
@@ -184,7 +184,7 @@ class AdminController extends Controller
                 }
             }
 
-            $em->persist($new_guest);
+            $em->persist($guest);
             $em->flush();
             return $this->redirectToRoute('thanks');
         }
