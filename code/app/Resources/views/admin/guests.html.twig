@@ -79,7 +79,8 @@
                                                                          aria-hidden="true"></span></a>
                     </td>
                     <td>
-                        <form action="/admin/guests/delete/{{ guest.username }}" onsubmit="return confirm('Do you really want to delete {{ guest.name }} {{ guest.surname }}?');">
+                        <form action="/admin/guests/delete/{{ guest.username }}"
+                              onsubmit="return confirm('Do you really want to delete {{ guest.name }} {{ guest.surname }}?');">
                             <button class="btn btn-danger">
                                 <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
                             </button>
