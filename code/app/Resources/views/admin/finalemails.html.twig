@@ -2,14 +2,14 @@
 {% block body %}
     <pre>
         {% for guest in guests %}
-            {% if not guest.masterGuest %}
+            {%- if not guest.masterGuest -%}
                 {{ guest.name }},{{ guest.surname }},{{ guest.email }},
                 {%- if guest.rsvpReceived == 1 %}yes{% else %}no{% endif %},
                 {%- if guest.dietary %}{{ guest.dietary }}{% else %}None{% endif %},
                 {%- if guest.vegetarian == 0 %}no{% else %}yes{% endif -%}
                 {%- for plusone in guest.plusOnes -%}
-                    ,Guest FirstName: {{ plusone.name }},Guest Surname: {{ plusone.surname }},Guest Dietary Requirements:
-                    {%- if plusone.dietary %} {{ plusone.dietary }}{% else %} None{% endif %},Guest is Vegetarian:
+                    ,FirstName: {{ plusone.name }},Surname: {{ plusone.surname }},Dietary Requirements:
+                    {%- if plusone.dietary %} {{ plusone.dietary }}{% else %} None{% endif %},Vegetarian Main Meal:
                     {%- if plusone.vegetarian == 0 %} no{% else %} yes{% endif -%}
                 {% endfor -%}
                 {%- for room in guest.rooms -%}
