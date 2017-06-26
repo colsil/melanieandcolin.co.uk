@@ -32,9 +32,11 @@
                 <th><a href="/admin/guests/show/invitedday/desc">Invited Day ({{ numInvitedDay }})</a></th>
                 <th><a href="/admin/guests/show/attendingday/desc">Attending Day ({{ numAttendingDay }})</a></th>
                 <th><a href="/admin/guests/show/invitedevening/desc">Invited Evening ({{ numInvitedEvening }})</a></th>
-                <th><a href="/admin/guests/show/attendingevening/desc">Attending Evening ({{ numAttendingEvening }})</a></th>
+                <th><a href="/admin/guests/show/attendingevening/desc">Attending Evening ({{ numAttendingEvening }})</a>
+                </th>
                 <th><a href="/admin/guests/show/masterGuest/desc">Master Guest</a></th>
                 <th><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
+                <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
             </tr>
             {% for guest in guests %}
                 <tr>
@@ -74,7 +76,14 @@
                     <td>{{ guest.masterguest }}</td>
                     <td>
                         <a href="/admin/rsvp/{{ guest.username }}"><span class="glyphicon glyphicon-edit"
-                                                                                aria-hidden="true"></span></a>
+                                                                         aria-hidden="true"></span></a>
+                    </td>
+                    <td>
+                        <form action="/admin/guests/delete/{{ guest.username }}" onsubmit="return confirm('Do you really want to delete {{ guest.name }} {{ guest.surname }}?');">
+                            <button class="btn btn-danger">
+                                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             {% endfor %}

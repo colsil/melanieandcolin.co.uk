@@ -38,6 +38,23 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/admin/guests/delete/{guest}", name="deleteGuest")
+     * @param String $guest
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteGuest($guest) {
+        $guestEntityManager = $this->getDoctrine()->getEntityManager();
+        $guest = $guestEntityManager->getRepository('AppBundle:Guest')->findOneBy([ 'email' => $guest ]);
+
+        if (!is_null($guest)) {
+            $guestEntityManager->remove($guest);
+            $guestEntityManager->flush();
+        }
+
+        return $this->redirectToRoute('guests');
+    }
+
+    /**
      * @Route("/admin/rooms/show", name="rooms")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
