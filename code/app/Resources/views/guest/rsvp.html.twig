@@ -5,7 +5,7 @@
         <h1>My RSVP</h1>
         {{ form_start(form, { 'attr': {'class': 'form-horizontal'}}) }}
 
-        {% if app.user.invitedday %}
+        {% if app.user.invitedday or is_granted("ROLE_ADMIN") %}
             <div class="form-group">
                 {{ form_label(form.attendingday, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
                 <div class="col-sm-10 col-lg-10">
@@ -28,7 +28,7 @@
             {% do form.attendingday.setRendered %}
             {% do form.vegetarian.setRendered %}
         {% endif %}
-        {% if app.user.invitedevening %}
+        {% if app.user.invitedevening or is_granted("ROLE_ADMIN") %}
             <div class="form-group">
                 {{ form_label(form.attendingevening, null, { 'label_attr': {'class': 'col-sm-2 col-lg-2 control-label required'} }) }}
                 <div class="col-sm-10 col-lg-10">
@@ -38,7 +38,7 @@
         {% else %}
             {% do form.attendingevening.setRendered %}
         {% endif %}
-        {% if app.user.isMasterGuest %}
+        {% if app.user.isMasterGuest or is_granted("ROLE_ADMIN") %}
             <h1>My Guests RSVPs</h1>
             {% for plusone in form.PlusOnes %}
                 <h2>{{ plusone.name.vars.value }} {{ plusone.surname.vars.value }}</h2>
