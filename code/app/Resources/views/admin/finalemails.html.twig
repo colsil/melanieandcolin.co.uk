@@ -1,10 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <pre>
-    {% for guest in guests %}
-        {{ guest.name }},{{ guest.surname }},{{ guest.email }},{{ guest.dietary }},
-        {%- if guest.vegetarian == 0 %}no{% else %}yes{% endif %}
+        Name,Surname,Email,RSVP Received,Dietary Requirements,Vegetarian
+        {% for guest in guests %}
+            {{ guest.name }},{{ guest.surname }},{{ guest.email }},
+            {%- if guest.rsvpReceived == 1 %}yes{% else %}no{% endif %},
+            {%- if guest.dietary %}{{ guest.dietary }}{% else %}None{% endif %},
+            {%- if guest.vegetarian == 0 %}no{% else %}yes{% endif -%}
+            {%- for plusone in guest.plusOnes -%}
+                ,Guest FirstName: {{ plusone.name }},Guest Surname: {{ plusone.surname }},Guest Dietary Requirements:
+                {%- if plusone.dietary %}{{ plusone.dietary }}{% else %}None{% endif %},Guest is Vegetarian:
+                {%- if plusone.vegetarian == 0 %}no{% else %}yes{% endif -%}
+            {% endfor -%}
+            {%- for room in guest.rooms -%}
+                ,Room Type: {{ room.type }},Quantity: {{ room.number }}
+            {%- endfor %}
 
-    {% endfor %}
+        {% endfor %}
 </pre>
 {% endblock %}
