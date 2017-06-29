@@ -8,7 +8,7 @@
         {% stylesheets
         '../vendor/twitter/bootstrap/dist/css/bootstrap.min.css'
         '@AppBundle/Resources/css/*.css' %}
-        <link rel="stylesheet" href="{{ asset_url }}"/>
+        <link rel="stylesheet" href="{{ absolute_url(asset_url) }}"/>
         {% endstylesheets %}
     {% endblock %}
 </head>
