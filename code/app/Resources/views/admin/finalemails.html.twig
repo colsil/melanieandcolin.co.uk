@@ -77,7 +77,7 @@
             </table>
         </div>
     </div>
-    {% if guest.plusOnes %}
+    {% if guest.plusOnes|length > 0 %}
         <div class="row">
             <h2>Your Guests</h2>
             {% for plusone in guest.plusOnes %}
