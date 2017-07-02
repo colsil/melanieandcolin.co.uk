@@ -42,9 +42,8 @@
     </tr>
     {% if guest.attendingday %}
         <tr>
-            <th>Main Meal Choice</th>
-            <td>{% if guest.vegetarian %}Butternut Squash and Aubergine Tower{% else %}
-                    Rib Eye Steak Rossini{% endif %}</td>
+            <th>Vegetarian</th>
+            <td>{% if guest.vegetarian %}Yes{% else %}No{% endif %}</td>
         </tr>
     {% endif %}
     <tr>
@@ -73,9 +72,8 @@
                     <td>{% if plusone.attendingday %}Yes{% else %}No{% endif %}</td>
                 </tr>
                 <tr>
-                    <th>Main Meal Choice</th>
-                    <td>{% if plusone.vegetarian %}Butternut Squash and Aubergine Tower{% else %}
-                            Rib Eye Steak Rossini{% endif %}</td>
+                    <th>Vegetarian</th>
+                    <td>{% if plusone.vegetarian %}Yes{% else %}No{% endif %}</td>
                 </tr>
             {% endif %}
             <tr>
