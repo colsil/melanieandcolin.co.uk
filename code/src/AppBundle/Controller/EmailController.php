@@ -56,7 +56,7 @@ class EmailController extends Controller
     }
 
     /**
-     * @Route("/admin/emails/send/all")
+     * @Route("/admin/emails/all/send")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function sendAll()
@@ -81,4 +81,17 @@ class EmailController extends Controller
         return $this->redirectToRoute("guests");
 
     }
+
+    /**
+     * @Route("/admin/emails/all/preview")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function previewAll()
+    {
+        $guestEntityManager = $this->getDoctrine()->getEntityManager();
+        $guests = $guestEntityManager->getRepository('AppBundle:Guest')->findBy(['masterGuest' => null]);
+
+        return $this->render('admin/emails.html.twig', [ 'guests' => $guests ]);
+    }
+
 }
