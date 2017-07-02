@@ -54,4 +54,31 @@ class EmailController extends Controller
 
         return $this->redirectToRoute("preview", ['guest' => $guest]);
     }
+
+    /**
+     * @Route("/admin/emails/send/all")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function sendAll()
+    {
+        $guestEntityManager = $this->getDoctrine()->getEntityManager();
+        $guests = $guestEntityManager->getRepository('AppBundle:Guest')->findBy(['masterGuest' => null]);
+        foreach ($guests as $guest) {
+            $message = new \Swift_Message("Your Melanie and Colin Wedding RSVP");
+            $message->setFrom($this->getParameter("email_address"))
+                ->setTo($guest->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'admin/finalemails.html.twig',
+                        array('guest' => $guest, 'email' => $this->getParameter("email_address"))
+                    ),
+                    'text/html'
+                );
+
+            $this->get('mailer')->send($message);
+        }
+
+        return $this->redirectToRoute("guests");
+
+    }
 }
