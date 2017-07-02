@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block stylesheets %}
-        {% stylesheets
-        '../vendor/twitter/bootstrap/dist/css/bootstrap.min.css'
-        '@AppBundle/Resources/css/*.css' %}
-        <link rel="stylesheet" href="{{ absolute_url(asset_url) }}"/>
-        {% endstylesheets %}
+        <style>{{ source('@bootstrap/bootstrap.min.css') }}</style>
+        <style>{{ source('@AppBundle/Resources/css/bootstrap-overrides.css') }}</style>
+        <style>{{ source('@AppBundle/Resources/css/carousel.css') }}</style>
+        <style>{{ source('@AppBundle/Resources/css/sticky-footer-navbar.css') }}</style>
+        <style>{{ source('@AppBundle/Resources/css/usercontent.css') }}</style>
     {% endblock %}
 </head>
 <body>
