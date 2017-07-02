@@ -19,7 +19,7 @@
     The website will enter a 'read-only' mode from 5th July onwards, but if you have any changes beyond this
     date, please <a href="mailto:{{ email }}">email us!</a>
 </p>
-<table class="table">
+<table style="text-align: left;" class="table">
     <tr>
         <th>Your Name</th>
         <td>{{ guest.name }}</td>
@@ -55,7 +55,7 @@
 {% if guest.plusOnes|length > 0 %}
     <h2>Your Guests</h2>
     {% for plusone in guest.plusOnes %}
-        <table class="table">
+        <table style="text-align: left;" class="table">
             <tr>
                 <th colspan="2" class="text-center">Guest {{ loop.index }}</th>
             </tr>
@@ -91,7 +91,7 @@
 {% endif %}
 <h2>Your Room Bookings</h2>
 {% if guest.rooms %}
-    <table class="table">
+    <table style="text-align: left;" class="table">
         <thead>
         <tr>
             <th>Room Type</th>
