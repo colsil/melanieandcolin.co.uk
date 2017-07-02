@@ -3,148 +3,111 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block stylesheets %}
-        <style>{{ source('@bootstrap/bootstrap.min.css') }}</style>
-        <style>{{ source('@AppBundle/Resources/css/bootstrap-overrides.css') }}</style>
-        <style>{{ source('@AppBundle/Resources/css/carousel.css') }}</style>
-        <style>{{ source('@AppBundle/Resources/css/sticky-footer-navbar.css') }}</style>
-        <style>{{ source('@AppBundle/Resources/css/usercontent.css') }}</style>
-    {% endblock %}
 </head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            {% image '@AppBundle/Resources/images/banner1.png' %}
-            <img class="img-responsive center-block banner-small" src="{{ absolute_url(asset_url) }}" alt="Mel and Colin">
-            {% endimage %}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Your Melanie and Colin Wedding RSVP</h1>
-            <p>Dear {{ guest.name }}<br/>
-                <br/>
-                We're fast approaching 'the big day' and we're now at the stage where we are confirming final numbers
-                with the venue. We have summarised your RSVP response below as we have understood it, so please let us
-                know as soon as possible if any of this information is incorrect!<br/>
-                <br/>
-                The website will enter a 'read-only' mode from 5th July onwards, but if you have any changes beyond this
-                date, please <a href="mailto:{{ email }}">email us!</a>
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <p>&nbsp;</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table">
-                <tr>
-                    <th>Your Name</th>
-                    <td>{{ guest.name }}</td>
-                </tr>
-                <tr>
-                    <th>Your Surname</th>
-                    <td>{{ guest.surname }}</td>
-                </tr>
-                <tr>
-                    <th>RSVP Received</th>
-                    <td>{% if guest.rsvpReceived %}Yes{% else %}No{% endif %}</td>
-                </tr>
+<body style="font-size:14px;font-family:Helvetica,Arial,sans-serif; color: #5a5a5a; background-color: #222">
+{% image '@AppBundle/Resources/images/banner1.png' %}
+<img height=360 width=600 class="img-responsive center-block banner-small"
+     src="{{ absolute_url(asset_url) }}" alt="Mel and Colin">
+{% endimage %}
+<h1>Your Melanie and Colin Wedding RSVP</h1>
+<p>Dear {{ guest.name }}<br/>
+    <br/>
+    We're fast approaching 'the big day' and we're now at the stage where we are confirming final numbers
+    with the venue. We have summarised your RSVP response below as we have understood it, so please let us
+    know as soon as possible if any of this information is incorrect!<br/>
+    <br/>
+    The website will enter a 'read-only' mode from 5th July onwards, but if you have any changes beyond this
+    date, please <a href="mailto:{{ email }}">email us!</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Your Name</th>
+        <td>{{ guest.name }}</td>
+    </tr>
+    <tr>
+        <th>Your Surname</th>
+        <td>{{ guest.surname }}</td>
+    </tr>
+    <tr>
+        <th>RSVP Received</th>
+        <td>{% if guest.rsvpReceived %}Yes{% else %}No{% endif %}</td>
+    </tr>
+    <tr>
+        <th>Attending Day</th>
+        <td>{% if guest.attendingday %}Yes{% else %}No{% endif %}</td>
+    </tr>
+    <tr>
+        <th>Attending Evening</th>
+        <td>{% if guest.attendingevening %}Yes{% else %}No{% endif %}</td>
+    </tr>
+    {% if guest.attendingday %}
+        <tr>
+            <th>Main Meal Choice</th>
+            <td>{% if guest.vegetarian %}Butternut Squash and Aubergine Tower{% else %}
+                    Rib Eye Steak Rossini{% endif %}</td>
+        </tr>
+    {% endif %}
+    <tr>
+        <th>Dietary Requirements</th>
+        <td>{% if guest.dietary %}{{ guest.dietary }}{% else %}None{% endif %}</td>
+    </tr>
+</table>
+{% if guest.plusOnes|length > 0 %}
+    <h2>Your Guests</h2>
+    {% for plusone in guest.plusOnes %}
+        <table class="table">
+            <tr>
+                <th colspan="2" class="text-center">Guest {{ loop.index }}</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ plusone.name }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ plusone.surname }}</td>
+            </tr>
+            {% if plusone.invitedday %}
                 <tr>
                     <th>Attending Day</th>
-                    <td>{% if guest.attendingday %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if plusone.attendingday %}Yes{% else %}No{% endif %}</td>
                 </tr>
                 <tr>
-                    <th>Attending Evening</th>
-                    <td>{% if guest.attendingevening %}Yes{% else %}No{% endif %}</td>
+                    <th>Main Meal Choice</th>
+                    <td>{% if plusone.vegetarian %}Butternut Squash and Aubergine Tower{% else %}
+                            Rib Eye Steak Rossini{% endif %}</td>
                 </tr>
-                {% if guest.attendingday %}
-                    <tr>
-                        <th>Main Meal Choice</th>
-                        <td>{% if guest.vegetarian %}Butternut Squash and Aubergine Tower{% else %}
-                                Rib Eye Steak Rossini{% endif %}</td>
-                    </tr>
-                {% endif %}
-                <tr>
-                    <th>Dietary Requirements</th>
-                    <td>{% if guest.dietary %}{{ guest.dietary }}{% else %}None{% endif %}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    {% if guest.plusOnes|length > 0 %}
-        <div class="row">
-            <h2>Your Guests</h2>
-            {% for plusone in guest.plusOnes %}
-                <table class="table">
-                    <tr>
-                        <th colspan="2" class="text-center">Guest {{ loop.index }}</th>
-                    </tr>
-                    <tr>
-                        <th>Name</th>
-                        <td>{{ plusone.name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Surname</th>
-                        <td>{{ plusone.surname }}</td>
-                    </tr>
-                    {% if plusone.invitedday %}
-                        <tr>
-                            <th>Attending Day</th>
-                            <td>{% if plusone.attendingday %}Yes{% else %}No{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Main Meal Choice</th>
-                            <td>{% if plusone.vegetarian %}Butternut Squash and Aubergine Tower{% else %}
-                                    Rib Eye Steak Rossini{% endif %}</td>
-                        </tr>
-                    {% endif %}
-                    <tr>
-                        <th>Attending Evening</th>
-                        <td>{% if plusone.attendingevening %}Yes{% else %}No{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th>Dietary Requirements</th>
-                        <td>{% if guest.dietary %}{{ guest.dietary }}{% else %}None{% endif %}</td>
-                    </tr>
-                </table>
-            {% endfor %}
-        </div>
-    {% endif %}
-    <div class="row">
-        <h2>Your Room Bookings</h2>
-        {% if guest.rooms %}
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Room Type</th>
-                    <th>Quantity</th>
-                </tr>
-                </thead>
-                {% for room in guest.rooms %}
-                    <tr>
-                        <th>{{ room.type }}</th>
-                        <td>{{ room.number }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-        {% else %}
-            <p>You have not informed us of any requirements to book a room at the venue</p>
-        {% endif %}
-    </div>
-    <div class="row">
-        <p>&nbsp;</p>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <p>We're thoroughly looking forward to celebrating with you!</p>
-            <p>Colin & Melanie</p>
-        </div>
-    </div>
-</div>
+            {% endif %}
+            <tr>
+                <th>Attending Evening</th>
+                <td>{% if plusone.attendingevening %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dietary Requirements</th>
+                <td>{% if guest.dietary %}{{ guest.dietary }}{% else %}None{% endif %}</td>
+            </tr>
+        </table>
+    {% endfor %}
+{% endif %}
+<h2>Your Room Bookings</h2>
+{% if guest.rooms %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Room Type</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        {% for room in guest.rooms %}
+            <tr>
+                <th>{{ room.type }}</th>
+                <td>{{ room.number }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>You have not informed us of any requirements to book a room at the venue</p>
+{% endif %}
+<p>We're thoroughly looking forward to celebrating with you!</p>
+<p>Colin & Melanie</p>
 </body>
