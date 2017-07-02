@@ -32,10 +32,12 @@
         <th>RSVP Received</th>
         <td>{% if guest.rsvpReceived %}Yes{% else %}No{% endif %}</td>
     </tr>
+    {% if guest.invitedday %}
     <tr>
         <th>Attending Day</th>
         <td>{% if guest.attendingday %}Yes{% else %}No{% endif %}</td>
     </tr>
+    {% endif %}
     <tr>
         <th>Attending Evening</th>
         <td>{% if guest.attendingevening %}Yes{% else %}No{% endif %}</td>
