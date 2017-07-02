@@ -10,7 +10,10 @@
      src="{{ absolute_url(asset_url) }}" alt="Mel and Colin">
 {% endimage %}
 <h1>Your Melanie and Colin Wedding RSVP</h1>
-<p>Dear {{ guest.name }}<br/>
+<p>Dear {{ guest.name }}<br/><br />
+    CORRECTION: Apologies for the second email and any confusion but due to *ahem* a copy-paste error in the code of the
+    website, guest's dietary requirements were listed as the same as the lead guest. This has now been corrected in the
+    information below.<br />
     <br/>
     We're fast approaching 'the big day' and we're now at the stage where we are confirming final numbers
     with the venue. We have summarised your RSVP response below as we have understood it, so please let us
@@ -33,10 +36,10 @@
         <td>{% if guest.rsvpReceived %}Yes{% else %}No{% endif %}</td>
     </tr>
     {% if guest.invitedday %}
-    <tr>
-        <th>Attending Day</th>
-        <td>{% if guest.attendingday %}Yes{% else %}No{% endif %}</td>
-    </tr>
+        <tr>
+            <th>Attending Day</th>
+            <td>{% if guest.attendingday %}Yes{% else %}No{% endif %}</td>
+        </tr>
     {% endif %}
     <tr>
         <th>Attending Evening</th>
@@ -84,7 +87,7 @@
             </tr>
             <tr>
                 <th>Dietary Requirements</th>
-                <td>{% if guest.dietary %}{{ guest.dietary }}{% else %}None{% endif %}</td>
+                <td>{% if plusone.dietary %}{{ plusone.dietary }}{% else %}None{% endif %}</td>
             </tr>
         </table>
     {% endfor %}

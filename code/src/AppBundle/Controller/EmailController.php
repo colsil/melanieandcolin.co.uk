@@ -64,7 +64,7 @@ class EmailController extends Controller
         $guestEntityManager = $this->getDoctrine()->getEntityManager();
         $guests = $guestEntityManager->getRepository('AppBundle:Guest')->findBy(['masterGuest' => null]);
         foreach ($guests as $guest) {
-            $message = new \Swift_Message("Your Melanie and Colin Wedding RSVP");
+            $message = new \Swift_Message("Your Melanie and Colin Wedding RSVP - Take 2!");
             $message->setFrom($this->getParameter("email_address"))
                 ->setTo($guest->getEmail())
                 ->setBody(
