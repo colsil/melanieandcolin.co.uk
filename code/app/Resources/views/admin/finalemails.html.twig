@@ -90,7 +90,7 @@
     {% endfor %}
 {% endif %}
 <h2>Your Room Bookings</h2>
-{% if guest.rooms %}
+{% if guest.rooms|length > 0 %}
     <table style="text-align: left;" class="table">
         <thead>
         <tr>
