@@ -30,48 +30,11 @@ class GuestFeaturesController extends Controller
     {
         $guestRepository = $this->getDoctrine()->getRepository('AppBundle:Guest');
         $guest = $guestRepository->findOneBy(['username' => $this->getUser()->getUsername()]);
-        $originalRooms = new ArrayCollection();
-
-        // Create an ArrayCollection of the current room objects in the database
-        foreach ($guest->getRooms() as $room) {
-            $originalRooms->add($room);
-        }
-
-        $rsvpForm = $this->createForm(RSVPFormType::class, $guest);
-
-        $rsvpForm->handleRequest($request);
-
-        if ($rsvpForm->isSubmitted() && $rsvpForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $new_guest = $rsvpForm->getData();
-            $new_guest->setRSVPReceived(true);
-            $plusones = $new_guest->getPlusOnes();
-            foreach ($plusones as $plusone) {
-                $plusone->setRSVPReceived(true);
-            }
-
-            $rooms = $new_guest->getRooms();
-
-            foreach ($rooms as $room) {
-                $room->setGuest($new_guest);
-            }
-
-            foreach ($originalRooms as $original) {
-                if (false === $rooms->contains($original)) {
-                    $em->remove($original);
-                }
-            }
-
-            $em->persist($new_guest);
-            $em->flush();
-            return $this->redirectToRoute('thanks');
-        }
-
 
         return $this->render(
-            'guest/rsvp.html.twig',
+            'guest/rsvp_ro.html.twig',
             array(
-                'form' => $rsvpForm->createView(),
+                'guest' => $guest,
             )
         );
     }
