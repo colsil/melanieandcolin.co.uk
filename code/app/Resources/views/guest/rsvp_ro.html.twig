@@ -38,7 +38,7 @@
             </tr>
         </table>
         {% if guest.plusOnes|length > 0 %}
-            <h2>Your Guests</h2>
+            <h2>My Guests</h2>
             {% for plusone in guest.plusOnes %}
                 <table class="table">
                     <tr>
@@ -73,7 +73,7 @@
                 </table>
             {% endfor %}
         {% endif %}
-        <h2>Your Room Bookings</h2>
+        <h2>My Room Bookings</h2>
         {% if guest.rooms|length > 0 %}
             <table class="table">
                 <thead>
