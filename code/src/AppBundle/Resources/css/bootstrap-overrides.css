@@ -8,3 +8,8 @@
 .banner-small {
     max-height: 300px;
 }
+
+.photo-frame {
+    min-height: 800px;
+    width: 100%;
+}

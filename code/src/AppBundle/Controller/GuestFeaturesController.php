@@ -96,4 +96,11 @@ class GuestFeaturesController extends Controller
             'email' => $this->getParameter("email_address")
         ]);
     }
+
+    /**
+     * @Route("/guest/photos", name="photos")
+     */
+    public function photos() {
+        return $this->render('guest/photos.html.twig');
+    }
 }
