@@ -4,7 +4,7 @@ php:
 services:
 - mysql
 env:
-  - DATABASE_HOST="localhost" DATABASE_NAME="weddingsite" DATABASE_USER="test" DATABASE_PASSWORD="tests"
+  - RDS_HOSTNAME="localhost" RDS_DB_NAME="weddingsite" RDS_USERNAME="test" RDS_PASSWORD="tests"
 install:
 - cd code
 - composer install
